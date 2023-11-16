@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import backgroundImg from "../public/images/backgroundPhoto2.jpg";
+import { ThemeProvider } from "next-themes";
+
 export default function Home() {
   /*<Image
    className={styles.logo}

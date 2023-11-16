@@ -11,3 +11,24 @@
   background-color: var(--primary-color);
   z-index: 11;
 }
+
+.logo {
+  cursor: pointer;
+}
+.logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--tertiary-color);
+  border-bottom: 1px solid var(--tertiary-color);
+  color: var(--article);
+  transition: all 0.5s ease 0s;
+}
+.logo_container:hover {
+  color: var(--tertiary-text-color);
+  border-color: var(--primary-text-color);
+}
+.logo_container > svg {
+  width: 40px;
+  height: 40px;
+}

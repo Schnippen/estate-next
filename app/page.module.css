@@ -227,7 +227,7 @@
 }
  */
 #root {
-  background-color: #f5f8fb;
+  background-color: var(--text-background);
 }
 
 .landing__page_photo {
