@@ -1,0 +1,69 @@
+.smallButton {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: var(--primary-text-color);
+  transition: all 0.3s ease 0s;
+  width: 70px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.smallButton_rail {
+  width: 100%;
+  height: 30px;
+  margin: 0 4px;
+  box-shadow: inset 0px 0px 13px -5px rgba(66, 68, 90, 1);
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  position: relative;
+}
+.smallButton_rail_span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  transition: transform 400ms ease-in-out;
+  
+  z-index: 0;
+  box-shadow: inset 0px 0px 23px -19px rgba(66, 68, 90, 1);
+}
+.smallButton_rail_span_active {
+  transform: translateX(108%);
+  background-color: var(--tertiary-text-color);
+  
+}
+.smallButton_rail_span_inactive {
+  transform: translateX(-1%);
+  background-color: var(--primary-color);
+}
+.smallButton_rail_svg {
+  display: flex;
+  display: flex;
+  align-items: center;
+  padding: 2px 2px;
+  z-index: 1;
+}
+
+.smallButton:hover {
+  color: var(--tertiary-text-color);
+  background-color: var(--tertiary-color);
+}
+
+.smallButton:active {
+  background-color: var(--tertiary-text-color);
+  transition: 0.15s;
+  box-shadow: 0 0 2px 2px var(--tertiary-text-color);
+}
+
+.smallButton:disabled {
+  background-color: var(--disabled);
+  border: 2px solid var(--secondary-text-color);
+}
