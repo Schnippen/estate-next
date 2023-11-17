@@ -4,12 +4,10 @@ import "./globals.css";
 import Footer from "./_components/Footer/Footer";
 import Navbar from "./_components/Navbar/Navbar";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--Montserrat",
 });
 
 export const metadata: Metadata = {
@@ -23,13 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-      <html lang="en">
-        <body className={`${inter.className} ${montserrat.variable} `}>
-          <Navbar />
-          {children}
-          <Footer />
-        </body>
-      </html>
-
+    <html lang="en">
+      <body className={montserrat.className}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
   );
 }

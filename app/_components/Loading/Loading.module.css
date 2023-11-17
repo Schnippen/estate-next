@@ -1,0 +1,58 @@
+.loading_container {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+
+  height: 300px;
+  width: 300px;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.text_container {
+  height: 50px;
+  grid-column: span 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+  text-wrap: nowrap;
+}
+.text_position {
+  position: absolute;
+  top: 0;
+}
+.svg {
+  width: 180px;
+  height: 180px;
+  animation: spin 0.8s linear infinite;
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading_container span {
+  position: relative;
+  display: inline-block;
+  animation: waviy 1s infinite;
+}
+@keyframes waviy {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
+}

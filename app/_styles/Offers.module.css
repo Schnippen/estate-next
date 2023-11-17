@@ -1,7 +1,9 @@
 .section_container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background-color: var(--primary-text-color);
 }
