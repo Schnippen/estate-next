@@ -18,11 +18,24 @@ async function Offers({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
+  const albafefe = searchParams.page;
   const page = searchParams["page"] ?? "1";
   const limit = searchParams["limit"] ?? "5";
   const start = (Number(page) - 1) * Number(limit);
   const end = start + Number(limit); //number
-  console.log(page, limit, start, end);
+  console.log(
+    albafefe,
+    "searchParams:",
+    searchParams,
+    "page:",
+    page,
+    "limit:",
+    limit,
+    "start:",
+    start,
+    "end:",
+    end
+  );
   //zrobić typy dla ofert
   /*    const offersData = fetchData()
   const offersFetched = await offersData; */
@@ -35,7 +48,7 @@ async function Offers({
     <ListingItem key={index} />
   )); */
 
-  console.log(Offers?.length);
+  console.log("offers.length:", Offers?.length);
 
   const Data = () => {
     return Offers?.map((item) => (

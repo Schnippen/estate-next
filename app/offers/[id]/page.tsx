@@ -10,11 +10,11 @@ import React, { Suspense } from "react";
 //console.log("Offers:", Offers);
 async function Item({ params: { id } }: { params: { id: number } }) {
   const itemID = id.toString();
-  /* let { data: Offers, error } = await supabase
+   let { data: Offers, error } = await supabase
     .from("Offers")
     .select()
-    .eq("offerID", itemID); */
-  /* console.log(id, Offers, typeof itemID); */
+    .eq("offerID", itemID);
+  console.log(id, Offers, typeof itemID); 
   return <div>item: {id}</div>;
 }
 
