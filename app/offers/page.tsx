@@ -23,20 +23,7 @@ async function Offers({
   const limit = searchParams["limit"] ?? "5";
   const start = (Number(page) - 1) * Number(limit);
   const end = start + Number(limit); //number
-  console.log(
-    albafefe,
-    "searchParams:",
-    searchParams,
-    "page:",
-    page,
-    "limit:",
-    limit,
-    "start:",
-    start,
-    "end:",
-    end
-  );
-  //zrobić typy dla ofert
+  //zrobić types dla ofert
   /*    const offersData = fetchData()
   const offersFetched = await offersData; */
   let { data: Offers, error } = await supabase
@@ -44,11 +31,11 @@ async function Offers({
     .select("*")
     .range(start, end - 1);
 
-  /*  const items = Array.from({ length: 10 }, (_, index) => (
-    <ListingItem key={index} />
-  )); */
+  let { data: data, count } = await supabase
+    .from("Offers")
+    .select("*", { count: "exact" });
 
-  console.log("offers.length:", Offers?.length);
+  console.log("COUnT:", typeof count);
 
   const Data = () => {
     return Offers?.map((item) => (
