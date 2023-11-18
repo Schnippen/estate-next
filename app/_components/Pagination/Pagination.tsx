@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import React from "react";
 
 function Pagination() {
-     const router = useRouter();
-     const searchParams = useSearchParams();
+  /*   const router = useRouter();
+  const searchParams = useSearchParams(); */
   return <nav>Pagination</nav>;
 }
 
