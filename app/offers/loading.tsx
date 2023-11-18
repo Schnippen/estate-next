@@ -7,6 +7,9 @@ function loading() {
         height: "100vh",
         width: "100vw",
         backgroundColor: "var(--primary-text-color)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <Loading />

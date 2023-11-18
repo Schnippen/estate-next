@@ -32,8 +32,8 @@ async function Offers({
 
   const Data = () => {
     return Offers?.map((item) => (
-      <Link href={`/blog/${item.offerID}`}>
-        <ListingItem key={item.offerID} />
+      <Link href={`/offers/${item.offerID.toString()}`}>
+        <ListingItem key={item.offerID} data={item}/>
       </Link>
     ));
   };

@@ -1,9 +1,43 @@
 import React from "react";
 import styles from "./ListingItem.module.css";
+import { RealEstateOffer } from "@/types";
 
-function ListingItem() {
+function ListingItem({ data }: { data: RealEstateOffer }) {
+  const title = data.offerTitle
+    ? data.offerTitle
+        .split(" ")
+        .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
+        .join(" ")
+    : "Offer name";
+  const categoryName = data.titleKategoria ? data.titleKategoria : null;
+  const price = data.priceInfo ? data.priceInfo : null;
+  const floorInfo =
+    typeof data.floorInfo === "string" ? (
+      <div>
+        <p>{"Piętro:"}</p>
+        <p>{data.floorInfo}</p>
+      </div>
+    ) : null;
+  const numberOfRooms =
+    typeof data.numberOfRoomsInfo === "string" ? (
+      <p>
+        {data.numberOfRoomsInfo}
+        {parseInt(data.numberOfRoomsInfo, 10) === 1
+          ? " Pokój"
+          : parseInt(data.numberOfRoomsInfo, 10) > 1 &&
+            parseInt(data.numberOfRoomsInfo, 10) < 5
+          ? " Pokoje"
+          : " Pokoi"}
+      </p>
+    ) : null;
+  const area = data.areaInfo ? data.areaInfo : null;
+  const areaPrice =
+    typeof data.areaPriceInfo === "string" ? (
+      <div>{data.areaPriceInfo}&nbsp;m²</div>
+    ) : null;
+
   return (
-    <li /* key={item.offerID}  */ className={styles.listItem_container}>
+    <li className={styles.listItem_container}>
       <article className={styles.grid_container}>
         <section
           className={styles.grid_img}
@@ -22,48 +56,25 @@ function ListingItem() {
             className={styles.grid_mini_title}
             /* onClick={(e) => handleNavigateItem(e)} */
           >
-            {/*  {item.offerTitle
-              .split(" ")
-              .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
-              .join(" ")} */}
+            {title}
           </h2>
           <h3
             className={styles.grid_mini_category}
             /*   onClick={(e) => handleNavigateItem(e)} */
           >
-            {/*  {item.titleKategoria} */}
+            {categoryName}
           </h3>
           <h3
             className={styles.grid_mini_price}
             /*  onClick={(e) => handleNavigateItem(e)} */
           >
-            {/*   {item.priceInfo} */}
+            {price}
           </h3>
-          <div className={styles.grid_mini_floor}>
-            {/* {typeof item.floorInfo === "string" ? (
-              <div>
-                <p>{"Piętro"}</p>
-                <p>{item.floorInfo}</p>
-              </div>
-            ) : null} */}
-          </div>
-          <div className={styles.grid_mini_numberOfRooms}>
-            {/* {typeof item.numberOfRoomsInfo === "string" ? (
-              <p>
-                {item.numberOfRoomsInfo}
-                {item.numberOfRoomsInfo === 1
-                  ? " Pokój"
-                  : item.numberOfRoomsInfo > 1 && item.numberOfRoomsInfo < 5
-                  ? " Pokoje"
-                  : " Pokoi"}
-              </p>
-            ) : null} */}
-          </div>
+          <div className={styles.grid_mini_floor}>{floorInfo}</div>
+          <div className={styles.grid_mini_numberOfRooms}>{numberOfRooms}</div>
           <div className={styles.grid_mini_area}>
-            <div>{/* {item.areaInfo} */}</div>
-            {/* {typeof item.areaPriceInfo === "string" ? (
-              <div>{item.areaPriceInfo}&nbsp;m²</div>
-            ) : null} */}
+            <div>{area}</div>
+            {areaPrice}
           </div>
           <p className={styles.grid_mini_sendMessage}>Napisz wiadomość</p>
           <div className={styles.grid_mini_sendMessageButton}>
