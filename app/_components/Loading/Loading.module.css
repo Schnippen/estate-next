@@ -56,3 +56,8 @@
     transform: translateY(-20px);
   }
 }
+@media (max-width: 1280px) {
+  .text_container{
+    font-size: 20px;
+  }
+}

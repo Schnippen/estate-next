@@ -22,22 +22,24 @@ async function Offers({
   const page = searchParams["page"] ?? "1";
   const limit = searchParams["limit"] ?? "5";
   const start = (Number(page) - 1) * Number(limit);
-  const end = start + Number(limit); //number
-  //zrobić types dla ofert
-  /*    const offersData = fetchData()
-  const offersFetched = await offersData; */
+  const end = start + Number(limit); 
+
+  //get offers data
   let { data: Offers, error } = await supabase
     .from("Offers")
     .select("*")
     .range(start, end - 1);
-
+  //get quantity of offers
   let { data: data, count } = await supabase
     .from("Offers")
     .select("*", { count: "exact" });
 
-  console.log("COUnT:", typeof count);
-
-  const Data = () => {
+  let totalItems = typeof count === 'number'?count:1;
+  let numberOfPages =Math.ceil( totalItems/Number(limit))
+  
+  console.log("totalItems",totalItems, "totalPages:",numberOfPages)
+  
+  const List = () => {
     return Offers?.map((item) => (
       <Link href={`/offers/${item.offerID.toString()}`}>
         <ListingItem key={item.offerID} data={item} />
@@ -46,10 +48,8 @@ async function Offers({
   };
   return (
     <section className={styles.section_container}>
-      Offers
-      <Data />
-      <Pagination />
-      {/* props totalpages number */}
+      <List />
+      <Pagination numberOfPages={numberOfPages}/>
     </section>
   );
 }
