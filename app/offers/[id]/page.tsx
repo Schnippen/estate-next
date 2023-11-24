@@ -3,30 +3,26 @@ import { supabase } from "@/app/_utils/superbaseClient";
 import React, { Suspense } from "react";
 import styles from "../../_styles/Item.module.css";
 import ItemMultimediaContainer from "@/app/_components/Item/ItemMultimediaContainer";
-/* export async function generateStaticParams() {
-     const { data: Offers, error } = await supabase
-    .from("Offers")
-    .select("offerID");
-  return Offers; 
- } */
-/* //console.log("Offers:", Offers);
- console.log(id, Offers, typeof itemID, typeof Offers);
- console.log(Offers ? Offers[0].marketInfo : null); */
+import ItemDescription from "@/app/_components/Item/ItemDescription";
+
+
 async function Item({ params: { id } }: { params: { id: number } }) {
   const itemID = id.toString();
   let { data: Offers, error } = await supabase
     .from("Offers")
     .select()
     .eq("offerID", itemID);
- 
+
+  //console.log(id, Offers, typeof itemID, typeof Offers);
+
   const Title = Offers
     ? Offers[0].offerTitle
         .split(" ")
         .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
         .join(" ")
     : null;
+    
   const CategoryTitle = Offers ? Offers[0].titleKategoria : null;
-
   const PriceInfo: string | null = Offers ? Offers[0].priceInfo : null;
   const PriceInfoComponent = () => {
     return (
@@ -101,7 +97,7 @@ async function Item({ params: { id } }: { params: { id: number } }) {
             </div>
           </section>
           <section className={styles.section_information}>
-            {/* <ItemInfoDescription prop={prop} isMobile={isMobile} /> */}
+            <ItemDescription Offers={Offers} />
           </section>
         </article>
         {/*  <ItemSideArticle prop={prop} AskForPrice={AskForPrice} /> */}
