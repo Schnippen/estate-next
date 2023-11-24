@@ -1,46 +1,65 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
-import styles from "./Pagination.module.css"
+import styles from "./Pagination.module.css";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
-function Pagination({numberOfPages}:{numberOfPages:number}) {
+function Pagination({ numberOfPages }: { numberOfPages: number }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get("page") ?? 1;
   const limit = searchParams.get("limit") ?? "5";
   console.log("pagination:", limit, page);
 
-  const disablePrevious = Number(page)<=1;
-  const disableNext=Number(page)===numberOfPages
-
+  const disablePrevious = Number(page) <= 1;
+  const disableNext = Number(page) === numberOfPages;
+  const PreviousButton = () => {
+    return (
+      <li>
+        <button
+          className={styles.pagination__list_btn}
+          onClick={() => {
+            router.push(
+              `/offers/?page=${Number(page) - 1}&limit=${Number(limit)}`
+            );
+          }}
+          disabled={disablePrevious}
+        >
+          {" "}
+          <HiArrowLeft />
+        </button>
+      </li>
+    );
+  };
+  const NextButton = () => {
+    return (
+      <li>
+        <button
+          className={styles.pagination__list_btn}
+          onClick={() => {
+            router.push(
+              `/offers/?page=${Number(page) + 1}&limit=${Number(limit)}`
+            );
+          }}
+          disabled={disableNext}
+        >
+          <HiArrowRight />
+        </button>
+      </li>
+    );
+  };
+  /*   const FirstButton=()=>{return()}
+  const Last Button=()=>{return()} */
   return (
-<nav className={styles.pagination}>
-          <ul className={styles.pagination__list}>
-            <li>
-            <button className={styles.pagination__list_btn}
-            onClick={() => {
-          router.push(
-            `/offers/?page=${Number(page) - 1}&limit=${Number(limit)}`
-          );
-        }} disabled={disablePrevious}
-      >                <HiArrowLeft />
-      </button>
-            </li>
-            <li>
-              {`${page}/${numberOfPages}`}
-            </li>
-            <li>
-            <button className={styles.pagination__list_btn}
-        onClick={() => {
-          router.push(
-            `/offers/?page=${Number(page) + 1}&limit=${Number(limit)}`
-          );
-        }} disabled={disableNext}
-      >
-        <HiArrowRight />
-      </button>
-            </li>
+    <nav className={styles.pagination}>
+      <ul className={styles.pagination__list}>
+        <PreviousButton />
+        <li>...</li>
+        <li
+          className={styles.pagination__list_middle_btn}
+        >{`${page}/${numberOfPages}`}</li>
+        <li>...</li>
+        <NextButton />
       </ul>
     </nav>
   );

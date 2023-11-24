@@ -8,6 +8,7 @@ export default function Home() {
     <main className={styles.main}>
       <section className={styles.landing__page_section}>
         <div className={styles.landing__page_photo}>
+          
           <div className={styles.radialContainer}></div>
           <Image
             src={backgroundImg}
