@@ -23,23 +23,37 @@ async function Offers({
   const end = start + Number(limit);
 
   //get offers data
+
   let { data: Offers, error } = await supabase
     .from("Offers")
     .select("*")
     .range(start, end - 1);
+
+  //console.log("Offers:", Offers);
   //get quantity of offers
   let { data: data, count } = await supabase
     .from("Offers")
-    .select("*", { count: "exact" });
-
+    .select("*", { count: "exact", head: true });
+  console.log("count", count, Offers);
   let totalItems = typeof count === "number" ? count : 1;
   let numberOfPages = Math.ceil(totalItems / Number(limit));
 
-  console.log("totalItems", totalItems, "totalPages:", numberOfPages);
+  console.log(
+    "totalItems",
+    totalItems,
+    "totalPages:",
+    numberOfPages,
+    "limit:",
+    limit,
+    "end:",
+    end,
+    "page:",
+    page
+  );
 
   const List = () => {
     return Offers?.map((item) => (
-      <Link href={`/offers/${item.offerID.toString()}`}>
+      <Link href={`/offers/${item.offerID}`}>
         <ListingItem key={item.offerID} data={item} />
       </Link>
     ));
