@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../_styles/ItemDescription.module.css";
 import ItemDescriptionTable from "./ItemDescriptionTable";
+import GoogleMaps from "../Map/GoogleMaps";
 function ItemDescription({ Offers }: { Offers: any[] | null }) {
   const data = Offers ? Offers[0] : {};
   const DescriptionInfo = Offers ? Offers[0].descriptionInfo : null;
@@ -19,7 +20,7 @@ function ItemDescription({ Offers }: { Offers: any[] | null }) {
     <div className={styles.description_container}>
       <ItemDescriptionTable Offers={data} />
       <Description />
-      GoogleMaps
+      <GoogleMaps Offers={data} />
     </div>
   );
 }
