@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import React from "react";
 import { fetchData } from "../_utils/fetchData";
 import { supabase } from "../_utils/superbaseClient";
-import { Suspense } from "react";
 import styles from "../_styles/Offers.module.css";
 import ListingItem from "../_components/ListItem/ListingItem";
 import Link from "next/link";
-import { type } from "os";
 import Pagination from "../_components/Pagination/Pagination";
 
 export const metadata: Metadata = {

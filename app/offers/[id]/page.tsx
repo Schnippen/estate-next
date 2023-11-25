@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import styles from "../../_styles/Item.module.css";
 import ItemMultimediaContainer from "@/app/_components/Item/ItemMultimediaContainer";
 import ItemDescription from "@/app/_components/Item/ItemDescription";
+import ItemSideArticle from "@/app/_components/Item/ItemSideArticle";
 
 
 async function Item({ params: { id } }: { params: { id: number } }) {
@@ -21,7 +22,7 @@ async function Item({ params: { id } }: { params: { id: number } }) {
         .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
         .join(" ")
     : null;
-    
+
   const CategoryTitle = Offers ? Offers[0].titleKategoria : null;
   const PriceInfo: string | null = Offers ? Offers[0].priceInfo : null;
   const PriceInfoComponent = () => {
@@ -100,6 +101,7 @@ async function Item({ params: { id } }: { params: { id: number } }) {
             <ItemDescription Offers={Offers} />
           </section>
         </article>
+        <ItemSideArticle Offers={Offers} />
         {/*  <ItemSideArticle prop={prop} AskForPrice={AskForPrice} /> */}
       </div>
     </>
