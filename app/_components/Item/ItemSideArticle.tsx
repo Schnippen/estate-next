@@ -5,6 +5,7 @@ import styles from "../../_styles/ItemSideArticle.module.css";
 import RealtorData from "./ItemRealtorData";
 
 import ItemSideArticleForm from "./ItemSideArticleForm";
+import ItemSideArticleCredit from "./ItemSideArticleCredit";
 
 function ItemSideArticle({ Offers }: { Offers: any[] | null }) {
   const Data = Offers ? Offers[0] : null;
@@ -17,7 +18,7 @@ function ItemSideArticle({ Offers }: { Offers: any[] | null }) {
             <ItemSideArticleForm />
           </div>
         </div>
-        {/* <ItemSideArticleCredit /> */}
+         <ItemSideArticleCredit />
       </section>
     </article>
   );

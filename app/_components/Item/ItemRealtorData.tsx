@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../_styles/ItemRealtorData.module.css";
 import DefaultProfilePicture from "@/public/images/profilePicture.png";
-
 import Image from "next/image";
 
 function RealtorData({ Offers }: { Offers: any }) {
@@ -11,6 +10,7 @@ function RealtorData({ Offers }: { Offers: any }) {
     return AgencyInfo.includes("tel.") ? null : <span>{AgencyInfo}</span>;
   };
   const TelephoneNumber = Offers.telephoneNumberInfo;
+  const TelephoneNumberSpaces = TelephoneNumber.replace(/(.{3})/g, "$1 ");
   return (
     <header className={styles.section_header}>
       <h2>Skontakuj się</h2>
@@ -20,15 +20,15 @@ function RealtorData({ Offers }: { Offers: any }) {
           src={DefaultProfilePicture}
           alt="Profile of realtor"
         />
-        <address className={styles.adress}>
-          <span>
+        <address className={styles.address}>
+          <div>
             <strong>{SellerInfo}</strong>
-          </span>
+          </div>
           <AgencyInfoComponent />
-          <span className="phoneNr">
+          <div className="phoneNr">
             tel.
-            <span className="phone">{TelephoneNumber}</span>
-          </span>
+            <span className="phone"> {TelephoneNumberSpaces}</span>
+          </div>
         </address>
       </div>
     </header>

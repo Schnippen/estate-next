@@ -58,6 +58,7 @@
   height: 196px;
   resize: none;
   background-color: var(--article);
+  padding: 12px;
 }
 
 .textarea:focus {

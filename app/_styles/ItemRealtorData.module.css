@@ -11,9 +11,8 @@
 }
 
 .contact {
-  display: flex;
   position: relative;
-  height: 100px;
+  min-height: 100px;
 }
 
 .profilePicture {

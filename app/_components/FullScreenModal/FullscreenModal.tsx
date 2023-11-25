@@ -83,7 +83,6 @@ function TermsOfService({ setIsActive, isActive }: TermsOfServiceTypes) {
             listings. By using our services, you agree to comply with the
             following terms and conditions:
           </p>
-
           <ol style={{ margin: "20px 40px" }}>
             <li style={{ margin: "20px 40px" }}>
               <strong>Acceptance of Terms:</strong>
@@ -113,7 +112,6 @@ function TermsOfService({ setIsActive, isActive }: TermsOfServiceTypes) {
               </ul>
             </li>
           </ol>
-
           <p>
             Thank you for choosing AnyTownReal Estate. Happy property hunting!
           </p>
