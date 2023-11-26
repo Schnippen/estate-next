@@ -34,22 +34,9 @@ async function Offers({
   let { data: data, count } = await supabase
     .from("Offers")
     .select("*", { count: "exact", head: true });
-  console.log("count", count, Offers);
+
   let totalItems = typeof count === "number" ? count : 1;
   let numberOfPages = Math.ceil(totalItems / Number(limit));
-
-  console.log(
-    "totalItems",
-    totalItems,
-    "totalPages:",
-    numberOfPages,
-    "limit:",
-    limit,
-    "end:",
-    end,
-    "page:",
-    page
-  );
 
   const List = () => {
     return Offers?.map((item) => (
