@@ -21,7 +21,14 @@ async function Offers({
   const limit = searchParams["limit"] ?? "5";
   const start = (Number(page) - 1) * Number(limit);
   const end = start + Number(limit);
+  const city = searchParams["city"] ?? "";
+  const estate = searchParams["estate"] ?? "";
+  const market = searchParams["market"] ?? "";
+  const from = searchParams["from"] ?? "";
+  const to = searchParams["to"] ?? "";
 
+  console.log("searchPARAMS rest", page, limit, city, estate, market, from, to);
+  console.log("searchPARAMS CITY", searchParams);
   //get offers data
 
   let { data: Offers, error } = await supabase

@@ -6,6 +6,7 @@ import CityDropdown from "../Dropdown/CityDropdown";
 import styles from "../../_styles/SearchForm.module.css";
 import Price from "../Dropdown/Price";
 import ButtonSearch from "../Buttons/ButtonSearch";
+import { useRouter, useSearchParams } from "next/navigation";
 interface QueryDetails {
   [key: string]: string;
 }
@@ -28,6 +29,16 @@ type TSearchForm = {
 }: TSearchForm */
 
 function SearchForm() {
+  const router = useRouter();
+  const [renderError, setRenderError] = useState(false);
+  const [queryDetails, setQueryDetails] = useState<QueryDetails>({
+    City: "",
+    TypeOfRealEstate: "",
+    TypeOfTransaction: "",
+    PriceFrom: "",
+    PriceTo: "",
+  });
+
   const TypeOfRealEstate = [
     { value: "Mieszkanie na sprzedaż", label: "Apartments" },
     { value: "Dom na sprzedaż", label: "Houses" },
@@ -37,8 +48,8 @@ function SearchForm() {
     { value: "", label: "Any" },
   ];
   const TypeOfTransaction = [
-    { value: "primary", label: "Primary" },
-    { value: "secondary", label: "Secondary" },
+    { value: "pierwotny", label: "Primary" },
+    { value: "wtórny", label: "Secondary" },
     { value: "", label: "Any" },
   ];
   const PriceData = [
@@ -61,14 +72,8 @@ function SearchForm() {
   interface QueryDetails {
     [key: string]: string;
   }
-  const [renderError, setRenderError] = useState(false);
-  const [queryDetails, setQueryDetails] = useState<QueryDetails>({
-    City: "",
-    TypeOfRealEstate: "",
-    TypeOfTransaction: "",
-    PriceFrom: "",
-    PriceTo: "",
-  });
+
+  console.log(queryDetails);
   const handleChange = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {
       setQueryDetails({
@@ -98,12 +103,40 @@ function SearchForm() {
       setRenderError(() => false);
     }
   }, [queryDetails.PriceFrom, queryDetails.PriceTo]);
+  //creating query
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");
-    /* console.table(queryDetails);
-    navigate("/Offers", { state: queryDetails }); */
+
+    let updatedQueryString = "";
+
+    if (queryDetails.City.length > 0) {
+      updatedQueryString += `city=${queryDetails.City}&`;
+    }
+    if (queryDetails.TypeOfRealEstate.length > 0) {
+      updatedQueryString += `estate=${queryDetails.TypeOfRealEstate}&`;
+    }
+    if (queryDetails.TypeOfTransaction.length > 0) {
+      updatedQueryString += `market=${queryDetails.TypeOfTransaction}&`;
+    }
+    if (queryDetails.PriceFrom.length > 0) {
+      updatedQueryString += `from=${queryDetails.PriceFrom}&`;
+    }
+    if (queryDetails.PriceTo.length > 0) {
+      updatedQueryString += `to=${queryDetails.PriceTo}&`;
+    }
+
+    // Remove the trailing "&" from the string
+    const finalQueryString = updatedQueryString.slice(0, -1);
+    console.log(finalQueryString);
+
+    const route =
+      finalQueryString.length > 0 ? `/offers/?${finalQueryString}` : "/offers";
+
+    console.log(route, updatedQueryString);
+
+    router.push(route);
   };
 
   return (
@@ -130,15 +163,15 @@ function SearchForm() {
             data={TypeOfTransaction}
             name={"TypeOfTransaction"}
             handleChange={handleChange}
-            placeholder={"Property Type"}
-            label={"Property Type"}
+            placeholder={"Type of Market"}
+            label={"Type of Market"}
           ></Dropdown>
         </div>
         <div
           className={styles.dropdown}
           style={{
             width: "320px",
-            boxShadow: renderError ? "0px 0px 11px 4px red" : "none",
+            boxShadow: renderError ? "0px 0px 11px 1px red" : "none",
           }}
         >
           <label htmlFor="">Cena w zł</label>
