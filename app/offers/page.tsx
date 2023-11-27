@@ -27,8 +27,16 @@ async function Offers({
   const from = searchParams["from"] ?? "";
   const to = searchParams["to"] ?? "";
 
-  console.log("searchPARAMS rest", page, limit, city, estate, market, from, to);
+  const params = {
+    filterCity: city.length > 0 ? city : "*",
+    filterEstate: estate.length > 0 ? estate : "*",
+    filterMarket: market.length > 0 ? market : "*",
+    filterFrom: from.length > 0 ? from : "*",
+    filterTo: to.length > 0 ? to : "*",
+  };
+  /* console.log("searchPARAMS rest", page, limit, city, estate, market, from, to);
   console.log("searchPARAMS CITY", searchParams);
+  console.log("filter PARAMS", params); */
   //get offers data
 
   let { data: Offers, error } = await supabase
@@ -36,7 +44,14 @@ async function Offers({
     .select("*")
     .range(start, end - 1);
 
-  //console.log("Offers:", Offers);
+  let { data: poopa } = await supabase
+    .from("Offers")
+    .select("*")
+    .filter("marketInfo", "in", "")
+    .range(1, 2);
+  console.log("Offers:", poopa, poopa?.length);
+  //eq city eq estate eq market eq .gte from,   .lte to
+
   //get quantity of offers
   let { data: data, count } = await supabase
     .from("Offers")

@@ -103,8 +103,8 @@ function SearchForm() {
       setRenderError(() => false);
     }
   }, [queryDetails.PriceFrom, queryDetails.PriceTo]);
+  
   //creating query
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");

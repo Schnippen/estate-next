@@ -1,12 +1,11 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import {  useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import styles from "./Pagination.module.css";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import Link from "next/link";
 
 function Pagination({ numberOfPages }: { numberOfPages: number }) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get("page") ?? 1;
   const limit = searchParams.get("limit") ?? "5";
