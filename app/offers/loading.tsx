@@ -10,6 +10,7 @@ function loading() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        userSelect: "none",
       }}
     >
       <Loading />

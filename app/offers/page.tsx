@@ -39,7 +39,7 @@ async function Offers({
     .from("Offers")
     .select("*", { count: "exact" })
     .range(start, end - 1);
-  console.log(
+ /*  console.log(
     "PARAMS:",
     params.filterCity,
     params.filterEstate,
@@ -48,8 +48,8 @@ async function Offers({
     params.filterTo
     /* typeof params.filterCity,
     typeof params.filterEstate */
-  );
-  console.log("bool params:", !!params);
+  
+  //console.log("bool params:", !!params);
 
   if (params.filterCity) {
     query = query.eq("cityInfo", `${params.filterCity}`);
@@ -69,9 +69,10 @@ async function Offers({
     query = query.lte("priceInfo", params.filterTo);
   }
 
-  const { data: Offers /* error */, count } = await query;
+  const { data: Offers, error, count } = await query;
   //console.log("query:", query);
-  console.log("Offers:", query, Offers?.length);
+  console.log("query Error:", error);
+  //console.log("Offers:", query, Offers?.length);
   //eq city eq estate eq market eq .gte from,   .lte to
 
   let totalItems = typeof count === "number" ? count : 1;

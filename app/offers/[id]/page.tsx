@@ -1,11 +1,10 @@
-import Loading from "@/app/_components/Loading/Loading";
+//import Loading from "@/app/_components/Loading/Loading";
 import { supabase } from "@/app/_utils/superbaseClient";
-import React, { Suspense } from "react";
+import React from "react";
 import styles from "../../_styles/Item.module.css";
 import ItemMultimediaContainer from "@/app/_components/Item/ItemMultimediaContainer";
 import ItemDescription from "@/app/_components/Item/ItemDescription";
 import ItemSideArticle from "@/app/_components/Item/ItemSideArticle";
-
 
 async function Item({ params: { id } }: { params: { id: number } }) {
   const itemID = id.toString();
@@ -13,7 +12,7 @@ async function Item({ params: { id } }: { params: { id: number } }) {
     .from("Offers")
     .select()
     .eq("offerID", itemID);
-
+  //console.log(Offers);
   //console.log(id, Offers, typeof itemID, typeof Offers);
 
   const Title = Offers
@@ -24,13 +23,13 @@ async function Item({ params: { id } }: { params: { id: number } }) {
     : null;
 
   const CategoryTitle = Offers ? Offers[0].titleKategoria : null;
-  const PriceInfo: string | null = Offers ? Offers[0].priceInfo : null;
+  const PriceInfo: number | null = Offers ? Offers[0].priceInfo : null;
   const PriceInfoComponent = () => {
     return (
       <>
-        {PriceInfo === "Zapytaj o cenę" ? (
+        {PriceInfo === 0 ? (
           <li className={styles.ask_for_price}>
-            <p>{PriceInfo}</p>
+            <p>"Zapytaj o cenę"</p>
           </li>
         ) : (
           <li>
@@ -41,18 +40,21 @@ async function Item({ params: { id } }: { params: { id: number } }) {
     );
   };
   const AreaPrice = Offers ? Offers[0].areaPriceInfo : null;
-  const AreaInfo = Offers ? Offers[0].AreaInfo : null;
+  const AreaInfo = Offers ? Offers[0].areaInfo : null;
   const NumberOfRooms = Offers ? Offers[0].numberOfRoomsInfo : null;
+
   const AreaInfoComponent = () => {
-    return (
-      <>
-        {typeof NumberOfRooms === "string" ? (
+    if (AreaInfo) {
+      return (
+        <>
           <li>
-            Powierzchnia<em>{AreaInfo}</em>
+            Powierzchnia <em>{AreaInfo} m²</em>
           </li>
-        ) : null}
-      </>
-    );
+        </>
+      );
+    } else {
+      null;
+    }
   };
   const NumberOfRoomsComponent = () => {
     return (
@@ -102,7 +104,6 @@ async function Item({ params: { id } }: { params: { id: number } }) {
           </section>
         </article>
         <ItemSideArticle Offers={Offers} />
-        {/*  <ItemSideArticle prop={prop} AskForPrice={AskForPrice} /> */}
       </div>
     </>
   );

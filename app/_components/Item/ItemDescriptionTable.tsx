@@ -14,7 +14,9 @@ function Table({ Offers }: { Offers: any }) {
         return (
           <tr key={index}>
             <th className={styles.description_table_header}>Powierzchnia</th>
-            <td>{value}</td>
+            <td>
+              {value} m<sup>2</sup>
+            </td>
           </tr>
         );
       case "numberOfRoomsInfo":
@@ -30,7 +32,9 @@ function Table({ Offers }: { Offers: any }) {
             <th className={styles.description_table_header}>
               Powierzchnia użytkowa
             </th>
-            <td>{value}</td>
+            <td>
+              {value} m<sup>2</sup>
+            </td>
           </tr>
         );
       case "floorInfo":
@@ -130,7 +134,9 @@ function Table({ Offers }: { Offers: any }) {
             <th className={styles.description_table_header}>
               Powierzchnia balkonu
             </th>
-            <td>{value}</td>
+            <td>
+              {value} m<sup>2</sup>
+            </td>
           </tr>
         );
       case "publishedInfo":

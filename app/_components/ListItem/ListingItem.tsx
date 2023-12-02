@@ -10,7 +10,12 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
         .join(" ")
     : "Offer name";
   const categoryName = data.titleKategoria ? data.titleKategoria : null;
-  const price = data.priceInfo ? data.priceInfo : null;
+  const price =
+    data.priceInfo !== undefined
+      ? data.priceInfo === 0
+        ? "Zapytaj o cenę"
+        : `${data.priceInfo} zł`
+      : null;
   const floorInfo =
     typeof data.floorInfo === "string" ? (
       <div>
@@ -30,7 +35,7 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
           : " Pokoi"}
       </p>
     ) : null;
-  const area = data.areaInfo ? data.areaInfo : null;
+  const area = data.areaInfo ? `${data.areaInfo} m²` : null;
   const areaPrice =
     typeof data.areaPriceInfo === "string" ? (
       <div>{data.areaPriceInfo}&nbsp;m²</div>
@@ -73,8 +78,9 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
           <div className={styles.grid_mini_floor}>{floorInfo}</div>
           <div className={styles.grid_mini_numberOfRooms}>{numberOfRooms}</div>
           <div className={styles.grid_mini_area}>
-            <div>{area}</div>
-            {areaPrice}
+            <div>
+              {areaPrice} {area}
+            </div>
           </div>
           <p className={styles.grid_mini_sendMessage}>Napisz wiadomość</p>
           <div className={styles.grid_mini_sendMessageButton}>

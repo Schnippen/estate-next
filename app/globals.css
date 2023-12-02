@@ -17,16 +17,16 @@
 }
 
 :root[data-theme="dark"] {
-  --primary-color: black;
+  --primary-color: #63768d;
   --secondary-color: #554971;
   --tertiary-color: #36213e;
   --quaternary-color: #051034;
-  --background-color: white;
-  --article: #fff;
-  --text-background: #f5f8fb;
+  --background-color: #121212; /* Dark background color */
+  --article: #1e1e1e; /* Darker background for articles or main content */
+  --text-background: #1e1e1e; /* Dark background for text content */
   --disabled: #57555e;
   --primary-text-color: #efe7e7;
-  --secondary-text-color: #141212;
+  --secondary-text-color: #f5f5f5; /* Light text on dark background */
   --tertiary-text-color: #daa520;
   --box-shadow-dropdown: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),

@@ -12,7 +12,7 @@ function GoogleMaps({ Offers }: { Offers: any[] | null }) {
     return null;
   }
 
-  console.log("MapData:", MapData.long, MapData.lat, typeof MapData.long);
+  //console.log("MapData:", MapData.long, MapData.lat, typeof MapData.long);
 
   return (
     <div className={styles.description_container_maps}>
