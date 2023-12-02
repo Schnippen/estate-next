@@ -1,5 +1,5 @@
 "use client";
-import {  useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import styles from "./Pagination.module.css";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
@@ -16,7 +16,7 @@ function Pagination({ numberOfPages }: { numberOfPages: number }) {
     from: searchParams.get("from") ?? "",
     to: searchParams.get("to") ?? "",
   };
-  console.log("pagination:", limit, page, params);
+  //console.log("pagination:", limit, page, params);
   const [urlPath, setUrlPath] = useState("");
   useEffect(() => {
     //console.log("USE EFFECT RUN", page);

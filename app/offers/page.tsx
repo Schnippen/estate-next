@@ -28,34 +28,51 @@ async function Offers({
   const to = searchParams["to"] ?? "";
 
   const params = {
-    filterCity: city.length > 0 ? city : "*",
-    filterEstate: estate.length > 0 ? estate : "*",
-    filterMarket: market.length > 0 ? market : "*",
-    filterFrom: from.length > 0 ? from : "*",
-    filterTo: to.length > 0 ? to : "*",
+    filterCity: city.length > 0 ? city : false,
+    filterEstate: estate.length > 0 ? estate : false,
+    filterMarket: market.length > 0 ? market : false,
+    filterFrom: from.length > 0 ? from : false,
+    filterTo: to.length > 0 ? to : false,
   };
-  /* console.log("searchPARAMS rest", page, limit, city, estate, market, from, to);
-  console.log("searchPARAMS CITY", searchParams);
-  console.log("filter PARAMS", params); */
-  //get offers data
 
-  let { data: Offers, error } = await supabase
+  let query = supabase
     .from("Offers")
-    .select("*")
+    .select("*", { count: "exact" })
     .range(start, end - 1);
+  console.log(
+    "PARAMS:",
+    params.filterCity,
+    params.filterEstate,
+    params.filterMarket,
+    params.filterFrom,
+    params.filterTo
+    /* typeof params.filterCity,
+    typeof params.filterEstate */
+  );
+  console.log("bool params:", !!params);
 
-  let { data: poopa } = await supabase
-    .from("Offers")
-    .select("*")
-    .filter("marketInfo", "in", "")
-    .range(1, 2);
-  console.log("Offers:", poopa, poopa?.length);
+  if (params.filterCity) {
+    query = query.eq("cityInfo", `${params.filterCity}`);
+    console.log("City filter działam:", params.filterCity);
+  }
+  if (params.filterEstate) {
+    query = query.eq("titleKategoria", `${params.filterEstate}`);
+    console.log("filter estate działam:", params.filterEstate);
+  }
+  if (params.filterMarket) {
+    query = query.eq("marketInfo", params.filterMarket);
+  }
+  if (params.filterFrom) {
+    query = query.gte("priceInfo", params.filterFrom);
+  }
+  if (params.filterTo) {
+    query = query.lte("priceInfo", params.filterTo);
+  }
+
+  const { data: Offers /* error */, count } = await query;
+  //console.log("query:", query);
+  console.log("Offers:", query, Offers?.length);
   //eq city eq estate eq market eq .gte from,   .lte to
-
-  //get quantity of offers
-  let { data: data, count } = await supabase
-    .from("Offers")
-    .select("*", { count: "exact", head: true });
 
   let totalItems = typeof count === "number" ? count : 1;
   let numberOfPages = Math.ceil(totalItems / Number(limit));

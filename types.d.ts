@@ -3,7 +3,7 @@ export type RealEstateOffer = {
   offerID: number;
   titleKategoria: string;
   offerTitle: string;
-  priceInfo: string;
+  priceInfo: number;
   areaPriceInfo: string;
   areaInfo: string;
   plotTypeInfo: string | null;
