@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
     "@supabase/supabase-js": "^2.38.4",
     "dotenv": "^16.3.1",
     "next": "14.0.2",
