@@ -15,6 +15,7 @@ import useActive from "@/app/_utils/useActive";
 import Link from "next/link";
 import ButtonExit from "../Buttons/ButtonExit";
 import { BsFacebook, BsApple } from "react-icons/bs";
+import { supabase } from "@/app/_utils/superbaseClient";
 
 function UserSignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,36 +61,40 @@ function UserSignUpForm() {
   }, [password, passwordMatched]);
 
   //go back after success or error
-  /*   const navigate = useNavigate();
+
   useEffect(() => {
     if (showSuccessModal || showErrorModal) {
       setTimeout(() => {
         setShowSuccessModal(false);
         setShowErrorModal(false);
-        navigate("/");
+        setEmail("");
+        setPassword("");
+        setPasswordMatched("");
       }, 5000);
     }
-  }, [showSuccessModal, showErrorModal]); */
+  }, [showSuccessModal, showErrorModal]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Signing Up!");
     console.log("Proceed registration");
-    /*     setIsLoading(true);
+    setIsLoading(true);
 
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          emailRedirectTo: "https//example.com/welcome",
+        },
+      });
       setShowSuccessModal(true);
       console.log("Success");
     } catch (error) {
       console.log(error);
       console.log("An error occurred. Please try again.");
       setShowErrorModal(true);
-    } */
+    }
   };
 
   const handleSpace = (e: React.KeyboardEvent) => {
@@ -138,7 +143,12 @@ function UserSignUpForm() {
             </h5>
           </div>
           <div className={styles.authentication_panel}>
-            <label htmlFor="email">E-mail:</label>
+            <label
+              htmlFor="email"
+              className={styles.authentication_panel_label}
+            >
+              E-mail:
+            </label>
             <div className={styles.form_div_wrapper}>
               <HiMail className={styles.svg} />
               <input
@@ -291,7 +301,8 @@ function UserSignUpForm() {
         <div className={styles.modal}>
           <div className={styles.modalWrapper}>
             <HiCheck className={styles.successModal} />
-            <h1>Success</h1>
+            <h2 className={styles.successTitle}>Success</h2>
+            <h1 className={styles.successTitle}>Check your e-mail</h1>
           </div>
         </div>
       ) : null}
