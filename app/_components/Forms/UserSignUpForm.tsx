@@ -89,6 +89,7 @@ function UserSignUpForm() {
         },
       });
       setShowSuccessModal(true);
+      console.log(data, error);
       console.log("Success");
     } catch (error) {
       console.log(error);
