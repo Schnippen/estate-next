@@ -1,5 +1,5 @@
 //import Loading from "@/app/_components/Loading/Loading";
-import { supabase } from "@/app/_utils/superbaseClient";
+import { supabase } from "@/app/_supabase/supabaseClient";
 import React from "react";
 import styles from "../../_styles/Item.module.css";
 import ItemMultimediaContainer from "@/app/_components/Item/ItemMultimediaContainer";

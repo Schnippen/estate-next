@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import { fetchData } from "../_utils/fetchData";
-import { supabase } from "../_utils/superbaseClient";
+import { supabase } from "../_supabase/supabaseClient";
 import styles from "../_styles/Offers.module.css";
 import ListingItem from "../_components/ListItem/ListingItem";
 import Link from "next/link";
@@ -39,7 +39,7 @@ async function Offers({
     .from("Offers")
     .select("*", { count: "exact" })
     .range(start, end - 1);
- /*  console.log(
+  /*  console.log(
     "PARAMS:",
     params.filterCity,
     params.filterEstate,
@@ -48,7 +48,7 @@ async function Offers({
     params.filterTo
     /* typeof params.filterCity,
     typeof params.filterEstate */
-  
+
   //console.log("bool params:", !!params);
 
   if (params.filterCity) {

@@ -14,7 +14,7 @@
 }
 .backButton {
   position: absolute;
-  left: 40%;
+  left: 50%;
   display: flex;
   align-items: center;
 }
@@ -43,12 +43,18 @@
   justify-content: center;
 }
 
+.labelPassword {
+  display: flex;
+  justify-content: center;
+}
+
 .authentication_button_wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin: 1rem 0;
+  user-select: none;
 }
 
 .authentication_button {
@@ -59,6 +65,7 @@
   cursor: pointer;
   position: relative;
   font-size: larger;
+  color: black;
 }
 .authentication_button:hover {
   box-shadow: 0 0 2px 2px var(--tertiary-text-color);
@@ -218,4 +225,23 @@
   color: #ff3333;
   height: 200px;
   width: 200px;
+}
+
+@media (max-width: 425px) {
+  .signUp_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .signUp_container {
+    width: 300px;
+  }
+  .backButton {
+    position: absolute;
+    left: 52%;
+    display: flex;
+    align-items: center;
+    bottom: 51%;
+  }
 }

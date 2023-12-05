@@ -1,5 +1,5 @@
 import { RealEstateOffer } from "@/types";
-import { supabase } from "./superbaseClient";
+import { supabase } from "../_supabase/supabaseClient";
 
 export async function fetchData(): Promise<RealEstateOffer[]> {
   try {

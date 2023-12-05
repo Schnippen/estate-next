@@ -15,7 +15,8 @@ import useActive from "@/app/_utils/useActive";
 import Link from "next/link";
 import ButtonExit from "../Buttons/ButtonExit";
 import { BsFacebook, BsApple } from "react-icons/bs";
-import { supabase } from "@/app/_utils/superbaseClient";
+import { supabase } from "@/app/_supabase/supabaseClient";
+import { signUpWithEmailAndPassword } from "@/app/_supabase/actions";
 
 function UserSignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -81,15 +82,19 @@ function UserSignUpForm() {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      /* const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
         options: {
           emailRedirectTo: "https//example.com/welcome",
         },
-      });
+      }); */
+      const result = await signUpWithEmailAndPassword(email, password);
+      console.log(result);
+      const DONE = JSON.parse(result);
+      console.log(DONE);
       setShowSuccessModal(true);
-      console.log(data, error);
+      //console.log(data, error);
       console.log("Success");
     } catch (error) {
       console.log(error);
@@ -118,7 +123,7 @@ function UserSignUpForm() {
         <form onSubmit={handleSubmit}>
           <div className={styles.authentication}>
             <h5 style={{ borderBottom: "1px solid rgba(216, 216, 216, 0.4)" }}>
-              use thirdt party:{" "}
+              Use third party Sign up:{" "}
             </h5>
             <div className={styles.authentication_button_wrapper}>
               <button className={styles.authentication_button}>
@@ -140,7 +145,7 @@ function UserSignUpForm() {
                 borderBottom: "1px solid rgba(216, 216, 216, 0.4)",
               }}
             >
-              or register via
+              or register via:
             </h5>
           </div>
           <div className={styles.authentication_panel}>
@@ -178,7 +183,9 @@ function UserSignUpForm() {
                 </p>
               </div>
             )}
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password" className={styles.labelPassword}>
+              Password:
+            </label>
             <div className={styles.form_div_wrapper}>
               <HiLockClosed className={styles.svg} />
               {passwordShown ? (
@@ -208,7 +215,7 @@ function UserSignUpForm() {
                 type={passwordShown ? "text" : "password"}
                 name="password"
                 required
-                placeholder="Hasło..."
+                placeholder="Password..."
                 className={
                   !password
                     ? styles.inputText
@@ -233,7 +240,12 @@ function UserSignUpForm() {
                 </p>
               </div>
             ) : null}
-            <label htmlFor="passwordConfirmation">Repeat Password:</label>
+            <label
+              htmlFor="passwordConfirmation"
+              className={styles.labelPassword}
+            >
+              Repeat Password:
+            </label>
             <div className={styles.form_div_wrapper}>
               <HiLockClosed className={styles.svg} />
               {passwordShown ? (
