@@ -90,9 +90,9 @@ function UserSignUpForm() {
         },
       }); */
       const result = await signUpWithEmailAndPassword(email, password);
-      console.log(result);
+      //console.log(result);
       const DONE = JSON.parse(result);
-      console.log(DONE);
+      //console.log(DONE);
       setShowSuccessModal(true);
       //console.log(data, error);
       console.log("Success");

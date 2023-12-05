@@ -5,9 +5,9 @@ function layout({ children }: { children: React.ReactNode }) {
   const SidePanelData = [
     { path: "/user/loginuser", name: "Login User" },
     { path: "/user/createuser", name: "Create New User" },
-    { path: "/user/createuser", name: "Add Listing" },
-    { path: "/user/createuser", name: "Favorites" },
-    { path: "/user/createuser", name: "Settings" },
+    { path: "/user/addlisting", name: "Add Listing" },
+    { path: "/user/favorites", name: "Favorites" },
+    { path: "/user/settings", name: "Settings" },
   ];
   const SidePanelList = () => {
     return SidePanelData.map((ListItem) => (

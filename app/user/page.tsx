@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import styles from "../_styles/UserLayout.module.css";
-import readUserSession from "../_supabase/actions";
+import { readUserSession } from "../_supabase/actions";
+import ButtonSignOut from "../_components/Buttons/ButtonSignOut";
 async function page() {
   const { data } = await readUserSession();
   const UserName = () => {
@@ -10,8 +11,11 @@ async function page() {
   };
   return (
     <section className={styles.welcomeSection}>
-      <h1 className={styles.welcomeSection_title}>Welcome</h1>
-      {data.session ? <UserName /> : null}
+      <div className={styles.welcomeSection_container}>
+        <h1 className={styles.welcomeSection_title}>Welcome</h1>
+        {data.session ? <UserName /> : null}
+        {data.session ? <ButtonSignOut /> : null}
+      </div>
     </section>
   );
 }

@@ -67,6 +67,16 @@
   color: var(--secondary-text-color);
   user-select: none;
 }
+.welcomeSection_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+.welcomeSection_container > * {
+  margin: 10px 0px;
+}
 
 @media (max-width: 425px) {
   .userLayoutSection {

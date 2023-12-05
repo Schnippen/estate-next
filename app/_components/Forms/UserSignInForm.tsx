@@ -15,6 +15,7 @@ import {
   HiOutlineX,
 } from "react-icons/hi";
 import ButtonExit from "../Buttons/ButtonExit";
+import { signInWithEmailAndPassword } from "@/app/_supabase/actions";
 
 function UserSignInForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -62,10 +63,13 @@ function UserSignInForm() {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      /* const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
-      });
+      }); */
+      const result = await signInWithEmailAndPassword(email, password);
+      //console.log(result);
+      const DONE = JSON.parse(result);
       setShowSuccessModal(true);
       /* console.log(data, error); */
       console.log("Success");
