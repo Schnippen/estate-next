@@ -53,6 +53,7 @@
 }
 .mainSectionFormContainer {
   height: 768px;
+  overflow: auto;
 }
 .welcomeSection {
   display: flex;
@@ -91,6 +92,10 @@
   .mainPanel {
     width: 100%;
     border-radius: 5px 5px 0px 0px;
+  }
+  .mainSectionFormContainer {
+    min-height: 768px;
+    overflow: auto;
   }
   .welcomeSection_title {
     font-size: 2rem;
