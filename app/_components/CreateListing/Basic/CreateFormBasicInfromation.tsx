@@ -251,7 +251,7 @@ function CreateFormBasicInfromation({
     if (!items) return null;
 
     return items.map((item) => (
-      <div style={{ width: "300px", padding: "10px" }}>
+      <div style={{ width: "300px", padding: "10px" }} key={item.label}>
         <CreateFormInput
           data={item}
           handleChange={handleChange}

@@ -9,6 +9,7 @@ import CreateFormLocation from "./Map/CreateFormLocation";
 import CreateFormMedia from "./AddPhotos/CreateFormMedia";
 import CreateFormDescription from "./Description/CreateFormDescription";
 import CreateFormBasicInfromation from "./Basic/CreateFormBasicInfromation";
+import { createListing } from "@/app/_supabase/actionsCreateListing";
 
 function CreateListingForm() {
   interface InputValuesTypes {
@@ -172,25 +173,21 @@ function CreateListingForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");
-    console.log(inputValues);
+    const offerID = Date.now();
+    setInputValues({
+      ...inputValues,
+      ["offerID"]: offerID,
+    });
 
-    const data = { ...inputValues };
-    fetch("http://localhost:3100/items", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("Success:");
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      await createListing({ inputValues });
+      console.log(inputValues);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   function isValidTitleKategoria(titleKategoria: string) {

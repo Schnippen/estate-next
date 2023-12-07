@@ -29,7 +29,7 @@ function CreateFormDescription({
 
   const handleOnChange = useThrottledFunc(
     (e: React.ChangeEvent<HTMLInputElement>) => handleChange(e),
-    2000
+    1000
   );
 
   return (
