@@ -6,7 +6,7 @@ import styles from "./Navbar.module.css";
 
 function NavbarLogo() {
   return (
-    <Link href="/">
+    <Link href="/" className={styles.logoPosition}>
       <div className={styles.logo}>
         <div className={styles.logo_container}>
           <MdOutlineRealEstateAgent />
