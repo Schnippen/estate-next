@@ -8,5 +8,5 @@ export async function createListing(object: any) {
     .from("Offers")
     .insert([object])
     .select();
-  console.log(data);
+  console.log("ACTION", "Data:", data, "Error:", error);
 }

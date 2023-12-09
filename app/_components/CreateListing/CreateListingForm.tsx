@@ -36,9 +36,9 @@ function CreateListingForm() {
     yearOfConstructionInfo: string;
     conditionOfThePropertyInfo: string;
     heatingInfo: string;
-    parkingInfo: string;
+    //parkingInfo: string;
     balconyInfo: string;
-    elevatorInfo: string;
+    //elevatorInfo: string;
     balconyAreaInfo: string;
     gardenAreaInfo: string;
     landAreaInfo: string;
@@ -46,7 +46,7 @@ function CreateListingForm() {
     plotWidthInfo: string;
     numberOfOfferInfo: string;
     publishedInfo: string;
-    googleMapsInfo: [];
+    //googleMapsInfo: [];
     telephoneNumberInfo: string;
     sellerInfo: string;
     estateAgencyInfo: string;
@@ -78,9 +78,9 @@ function CreateListingForm() {
     yearOfConstructionInfo: "",
     conditionOfThePropertyInfo: "",
     heatingInfo: "",
-    parkingInfo: "",
+    //parkingInfo: "",
     balconyInfo: "",
-    elevatorInfo: "",
+    //elevatorInfo: "",
     balconyAreaInfo: "",
     gardenAreaInfo: "",
     landAreaInfo: "",
@@ -88,12 +88,12 @@ function CreateListingForm() {
     plotWidthInfo: "",
     numberOfOfferInfo: "",
     publishedInfo: "",
-    googleMapsInfo: [],
+    //googleMapsInfo: [],
     telephoneNumberInfo: "",
     sellerInfo: "",
     estateAgencyInfo: "",
     sellerInfoEmail: "",
-    offerID: 11111111,
+    offerID: Date.now(),
   });
 
   const [category, setTitleCategory] = useState({
@@ -176,15 +176,50 @@ function CreateListingForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");
-    const offerID = Date.now();
-    setInputValues({
-      ...inputValues,
-      ["offerID"]: offerID,
-    });
 
     try {
-      await createListing({ inputValues });
-      console.log(inputValues);
+      await createListing({
+        titleKategoria: inputValues.titleKategoria,
+        offerTitle: inputValues.offerTitle,
+        priceInfo: inputValues.priceInfo,
+        areaInfo: inputValues.areaInfo,
+        areaPriceInfo: inputValues.areaPriceInfo,
+        numberOfRoomsInfo: inputValues.numberOfRoomsInfo,
+        usableArea: inputValues.usableArea,
+        floorInfo: inputValues.floorInfo,
+        descriptionInfo: inputValues.descriptionInfo,
+        buildingMaterialInfo: inputValues.buildingMaterialInfo,
+        numbersOfFloorsInfo: inputValues.numbersOfFloorsInfo,
+        numberOfBathroomsInfo: inputValues.numberOfBathroomsInfo,
+        typeOfKitchenInfo: inputValues.typeOfKitchenInfo,
+        numbersOfBedroomsInfo: inputValues.numbersOfBedroomsInfo,
+        isBathroomSeparateInfo: inputValues.isBathroomSeparateInfo,
+        windowWoodworkInfo: inputValues.windowWoodworkInfo,
+        marketInfo: inputValues.marketInfo,
+        formOfPropertyInfo: inputValues.formOfPropertyInfo,
+        typeOfBuildingInfo: inputValues.typeOfBuildingInfo,
+        plotTypeInfo: inputValues.plotTypeInfo,
+        yearOfConstructionInfo: inputValues.yearOfConstructionInfo,
+        conditionOfThePropertyInfo: inputValues.conditionOfThePropertyInfo,
+        heatingInfo: inputValues.heatingInfo,
+        //parkingInfo: inputValues.parkingInfo,
+        balconyInfo: inputValues.balconyInfo,
+        //Info: inputValues.elevatorInfo,
+        balconyAreaInfo: inputValues.balconyAreaInfo,
+        gardenAreaInfo: inputValues.gardenAreaInfo,
+        landAreaInfo: inputValues.landAreaInfo,
+        plotLengthInfo: inputValues.plotLengthInfo,
+        plotWidthInfo: inputValues.plotWidthInfo,
+        numberOfOfferInfo: inputValues.numberOfOfferInfo,
+        publishedInfo: inputValues.publishedInfo,
+        //googleMapsInfo: inputValues.googleMapsInfo,
+        telephoneNumberInfo: inputValues.telephoneNumberInfo,
+        sellerInfo: inputValues.sellerInfo,
+        estateAgencyInfo: inputValues.estateAgencyInfo,
+        sellerInfoEmail: inputValues.sellerInfoEmail,
+        offerID: inputValues.offerID,
+      });
+      console.log("input VALUES", inputValues);
     } catch (error) {
       console.log(error);
     }
@@ -223,7 +258,6 @@ function CreateListingForm() {
               }}
             >
               <p>For Sale</p>
-
               <input
                 type="radio"
                 value="na sprzedaż"
