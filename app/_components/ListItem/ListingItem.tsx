@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./ListingItem.module.css";
 import { RealEstateOffer } from "@/types";
-
+import AddToFavoritesButton from "../Buttons/AddToFavoritesButton";
+import ListItemPhotoGallery from "./ListItemPhotoGallery";
 function ListingItem({ data }: { data: RealEstateOffer }) {
   const title = data.offerTitle
     ? data.offerTitle
@@ -48,27 +49,21 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
           className={styles.grid_img}
           /* onClick={(e) => handleNavigateItem(e)} */
         >
-          {/* <img
-            src={`https://picsum.photos/id/${
-              photosPicsum[Math.floor(Math.random() * photosPicsum.length)]
-            }/500/500`}
-            alt="listing"
-            loading="lazy"
-          ></img> */}
+          <ListItemPhotoGallery />
         </section>
         <section className={styles.grid_mini}>
-          <h2
-            className={styles.grid_mini_title}
-            /* onClick={(e) => handleNavigateItem(e)} */
-          >
-            {title}
-          </h2>
           <h3
             className={styles.grid_mini_category}
             /*   onClick={(e) => handleNavigateItem(e)} */
           >
             {categoryName}
           </h3>
+          <h2
+            className={styles.grid_mini_title}
+            /* onClick={(e) => handleNavigateItem(e)} */
+          >
+            {title}
+          </h2>
           <h3
             className={styles.grid_mini_price}
             /*  onClick={(e) => handleNavigateItem(e)} */
@@ -82,15 +77,15 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
               {areaPrice} {area}
             </div>
           </div>
+            <p className={styles.grid_mini_favorite}>Dodaj do ulubionych</p>
+            <div className={styles.grid_mini_favoriteButton}>
+              <AddToFavoritesButton />
+            </div>
           <p className={styles.grid_mini_sendMessage}>Napisz wiadomość</p>
           <div className={styles.grid_mini_sendMessageButton}>
             {/*       <Button>
               <HiMail />
             </Button> */}
-          </div>
-          <p className={styles.grid_mini_favorite}>Dodaj do ulubionych</p>
-          <div className={styles.grid_mini_favoriteButton}>
-            {/*   {AddToFavorites} */}
           </div>
         </section>
       </article>

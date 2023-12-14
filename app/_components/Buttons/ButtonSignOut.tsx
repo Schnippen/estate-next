@@ -6,10 +6,15 @@ import styles from "./ButtonSignOut.module.css";
 function ButtonSignOut() {
   const handleLogOut = async () => {
     await logOut;
-    redirect("/");
+    console.log("logout clicked");
+    //redirect("/user");
   };
 
-  return <button className={styles.small_button}>Logout</button>;
+  return (
+    <button className={styles.small_button} onClick={() => handleLogOut()}>
+      Logout
+    </button>
+  );
 }
 
 export default ButtonSignOut;

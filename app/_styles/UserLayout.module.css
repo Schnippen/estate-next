@@ -81,8 +81,8 @@
 
 @media (max-width: 425px) {
   .userLayoutSection {
-    min-width: 320px;
-    width: 320px;
+    min-width: 310px;
+    width: 310px;
     display: flex;
     flex-direction: column-reverse;
   }

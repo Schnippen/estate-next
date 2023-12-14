@@ -34,6 +34,7 @@ export async function readUserSession() {
 }
 
 export async function logOut() {
+  console.log("log out clicked");
   const supabase = await createSupabaseServerClient();
   return supabase.auth.signOut();
 }

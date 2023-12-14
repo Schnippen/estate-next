@@ -21,19 +21,18 @@
 }
 
 .grid_img {
-  height: 100%;
-  width: 100%;
-  border-radius: 16px;
+  height: 300px;
+  width: 300px;
   grid-row-start: 1;
   grid-row-end: 1;
   cursor: pointer;
 }
-
-.grid_img img {
+.ImageWrapper {
   width: 100%;
   height: 100%;
+  position: relative;
+  border-radius: 16px;
 }
-
 .grid_mini {
   height: 100%;
   width: 100%;
@@ -155,100 +154,106 @@
 @media (max-width: 800px) {
   .grid_container {
     width: 300px;
-    height: 400px;
+    min-height: 600px;
+    height: auto;
     border-radius: 16px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
     display: grid;
     background-color: var(--article);
+    padding: 0;
     grid-template-areas:
       "image"
       "description";
   }
-
   .grid_img {
-    height: 200px;
+    height: 300px;
+    width: 100%;
     grid-area: image;
     object-fit: cover;
-    background-color: bisque;
-    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: center;
+    padding: 5px 5px 0 5px;
   }
-  .grid_img img {
-    border-radius: 16px 16px 0 0;
+
+  .ImageWrapper {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    position: relative;
+    border-radius: 16px;
+  }
+  .grid_mini {
+    height: 420px;
+    width: 100%;
+    grid-area: description;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(7, 60px);
   }
 
-  .grid_description {
+  .grid_mini_category {
     width: 300px;
-    height: 200px;
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    grid-template-rows: 30% 40% 15% 15%;
-  }
-  .grid_description_category {
     grid-column: 1/3;
-    grid-row: 1;
+    grid-row: 1/1;
     font-size: 16px;
     font-weight: 500;
-    padding-left: 10px;
+    padding-left: 5px;
     display: flex;
     align-items: center;
-    border-top: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
     color: var(--secondary-text-color);
   }
-
-  .grid_description_price {
-    grid-column: 3/5;
-    grid-row: 1;
-    border-top: 1px solid var(--secondary-color);
-    font-size: 16px;
+  .grid_mini_price {
+    grid-column: 1/3;
+    grid-row: 2/2;
+    padding-left: 5px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding-right: 10px;
+    align-items: flex-start;
     justify-content: center;
     color: var(--secondary-text-color);
   }
-  .grid_description_price > h3 {
-    font-size: 18px;
-  }
-
-  .grid_description_title {
-    font-size: 20px;
+  .grid_mini_title {
+    width: 300px;
+    font-size: 16px;
     border-top: 2px solid rgba(216, 216, 216, 0.4);
     border-bottom: 2px solid rgba(216, 216, 216, 0.4);
-    grid-column: 1/5;
+    grid-column: 1/3;
+    grid-row: 3/3;
     padding: 0 10px;
     display: flex;
     align-items: center;
+    padding-left: 5px;
+
+    text-wrap: pretty;
+  }
+  .grid_mini_floor {
+    grid-column: 1/2;
+    grid-row: 4/4;
+  }
+  .grid_mini_numberOfRooms {
+    grid-column: 2/2;
+    grid-row: 4/4;
+  }
+  .grid_mini_area {
+    grid-column: 1/2;
+    grid-row: 5/5;
   }
 
-  .grid_description_details {
-    display: flex;
-    grid-column: 1/4;
-    grid-row: 3/5;
-
-    align-items: center;
-    justify-content: center;
+  .grid_mini_sendMessage {
+    grid-column: 1/2;
+    grid-row: 7/7;
+    padding-left: 5px;
   }
-  .grid_description_details_child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+  .grid_mini_sendMessageButton {
+    grid-column: 2/2;
+    grid-row: 7/7;
   }
-
-  .grid_description_details_child > p {
-    font-size: 14px;
+  .grid_mini_favorite {
+    grid-column: 1/2;
+    grid-row: 6/6;
+    padding-left: 5px;
   }
-
-  .grid_description_favoriteButton {
-    grid-column: 4/5;
-    grid-row: 3/5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .grid_mini_favoriteButton {
+    grid-column: 2/2;
+    grid-row: 6/6;
   }
 }
