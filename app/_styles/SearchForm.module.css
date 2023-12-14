@@ -27,7 +27,7 @@
   background-color: var(--secondary-color);
   border-radius: 5px;
   margin: auto;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -38,6 +38,11 @@
   justify-content: center;
   border-top: 1px solid rgb(224, 224, 224);
   border-bottom: 1px solid rgb(224, 224, 224);
+}
+@media (max-width: 1530px) {
+  .searchbar {
+    margin-top: 100px;
+  }
 }
 @media (max-width: 1400px) {
   .searchbar {
@@ -64,7 +69,6 @@
     width: 320px;
     height: auto;
     padding: 20px 0px;
-    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
