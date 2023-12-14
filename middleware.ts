@@ -44,7 +44,16 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getSession();
-
+  const {
+    data: { session },
+    error,
+  } = await supabase.auth.getSession();
+  //error handling
+  /*   console.log("Session:", session);
+  console.log("ERROR:", error?.message); */
+  /*   if (error) {
+    response.cookies.delete("");
+    return ["error", response];
+  } */
   return response;
 }

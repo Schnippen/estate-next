@@ -8,7 +8,7 @@ import LoginComponent from "./LoginComponent";
 function Navbar() {
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
-  const Hamburger = () => {
+  /*   const Hamburger = () => {
     return (
       <div
         onClick={() => setIsOpened(!isOpened)}
@@ -31,7 +31,7 @@ function Navbar() {
         ></div>
       </div>
     );
-  };
+  }; */
 
   return (
     <ThemeProvider themes={["light", "dark"]}>
@@ -42,7 +42,9 @@ function Navbar() {
             <ThemeButton />
           </div>
           <NavbarLogo />
-          <LoginComponent />
+          <div className={styles.loginPosition}>
+            <LoginComponent />
+          </div>
         </nav>
       </header>
     </ThemeProvider>
