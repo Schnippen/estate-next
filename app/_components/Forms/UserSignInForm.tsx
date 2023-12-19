@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./UserSignUpForm.module.css";
-import { supabase } from "@/app/_supabase/supabaseClient";
 import useActive from "@/app/_utils/useActive";
 import Link from "next/link";
 import { BsFacebook, BsApple } from "react-icons/bs";
@@ -22,10 +21,9 @@ function UserSignInForm() {
 
   //email
   const [email, setEmail] = useState<string>("");
-  const [emailValid, setEmailValid] = useActive(false);
   //password
   const [password, setPassword] = useState<string>("");
-  const [passwordValid, setPasswordValid] = useActive(false);
+
   const [focusedPassword, setFocusedPassword] = useState(false);
   const [passwordShown, setPasswordShown] = useActive(false);
   const inputRefPassword = useRef<HTMLInputElement>(null);
@@ -34,7 +32,7 @@ function UserSignInForm() {
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     if (showSuccessModal || showErrorModal) {
       document.body.style.overflow = "hidden";
@@ -43,8 +41,7 @@ function UserSignInForm() {
     }
   }, [showSuccessModal, showErrorModal]);
 
-  //go back after success or error
-
+  //show success or error
   useEffect(() => {
     if (showSuccessModal || showErrorModal) {
       setTimeout(() => {
@@ -63,14 +60,16 @@ function UserSignInForm() {
     setIsLoading(true);
 
     try {
-      /* const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      }); */
       const result = await signInWithEmailAndPassword(email, password);
       //console.log(result);
-      const DONE = JSON.parse(result);
-      setShowSuccessModal(true);
+      const { data, error } = JSON.parse(result);
+      console.log(data, error.message);
+      if (error.message) {
+        setErrorMessage(error.message);
+        setShowErrorModal(true);
+      } else {
+        setShowSuccessModal(true);
+      }
       /* console.log(data, error); */
       console.log("Success");
     } catch (error) {
@@ -191,7 +190,7 @@ function UserSignInForm() {
             <div>
               <input
                 type="submit"
-                value={"Sign Up"}
+                value={"Sign In"}
                 className={styles.submit}
                 disabled={!email && !password}
               />
@@ -204,7 +203,7 @@ function UserSignInForm() {
           <div className={styles.modalWrapper}>
             <HiCheck className={styles.successModal} />
             <h2 className={styles.successTitle}>Success</h2>
-            <h1 className={styles.successTitle}>Check your e-mail</h1>
+            {/* <h1 className={styles.successTitle}>Check your e-mail</h1> */}
           </div>
         </div>
       ) : null}
@@ -212,7 +211,8 @@ function UserSignInForm() {
         <div className={styles.modal}>
           <div className={styles.modalWrapper}>
             <HiOutlineX className={styles.errorModal} />
-            <h1>Error</h1>
+            <h1 className={styles.errorModal_text}>Error</h1>
+            <h1 className={styles.errorModal_text}>{errorMessage}</h1>
           </div>
         </div>
       ) : null}

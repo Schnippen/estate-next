@@ -1,13 +1,15 @@
 "use client";
 import React from "react";
 import { logOut } from "@/app/_supabase/actions";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
 import styles from "./ButtonSignOut.module.css";
 function ButtonSignOut() {
+  const router = useRouter();
   const handleLogOut = async () => {
-    await logOut;
+    await logOut();
     console.log("logout clicked");
-    //redirect("/user");
+    //router.push("/");
   };
 
   return (

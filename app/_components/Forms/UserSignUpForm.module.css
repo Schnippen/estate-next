@@ -226,7 +226,9 @@
   height: 200px;
   width: 200px;
 }
-
+.errorModal_text {
+  color: var(--article);
+}
 @media (max-width: 425px) {
   .signUp_body {
     display: flex;
@@ -243,5 +245,8 @@
     display: flex;
     align-items: center;
     bottom: 51%;
+  }
+  .modalWrapper {
+    width: 320px;
   }
 }

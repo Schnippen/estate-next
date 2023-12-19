@@ -13,7 +13,7 @@ export default function Home() {
           </h1>
           <p className={styles.DescriptionContainer_paragraph}>
             Explore a diverse portfolio of properties, from cozy apartments to
-            sprawling estates, and find the perfect place to call home
+            sprawling estates, and find the perfect place to call home.
           </p>
         </div>
       </div>
@@ -30,6 +30,7 @@ export default function Home() {
             src={LandingPageBackground}
             alt="Background Image: Violet house"
             placeholder="blur"
+            quality={50}
           />
           <SearchForm />
         </div>
