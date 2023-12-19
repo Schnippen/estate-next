@@ -1,6 +1,8 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+//const isLoggedIn: boolean = false
+
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
     request: {
@@ -43,11 +45,15 @@ export async function middleware(request: NextRequest) {
       },
     }
   );
-
+  /* let cookie = request.headers;
+  console.log(cookie); */
   const {
     data: { session },
     error,
   } = await supabase.auth.getSession();
+  if (session) {
+    return NextResponse.redirect(new URL("/user", request.url));
+  }
   //error handling
   /*   console.log("Session:", session);
   console.log("ERROR:", error?.message); */
@@ -57,3 +63,7 @@ export async function middleware(request: NextRequest) {
   } */
   return response;
 }
+
+export const config = {
+  matcher: ["/user/createuser", "/user/loginuser"],
+};
