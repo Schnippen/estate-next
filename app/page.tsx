@@ -30,11 +30,12 @@ export default function Home() {
             src={LandingPageBackground}
             alt="Background Image: Violet house"
             placeholder="blur"
-            quality={50}
+            quality={30}
           />
           <SearchForm />
         </div>
         <div className={styles.page_gap}></div>
+
       </section>
     </main>
   );

@@ -5,52 +5,38 @@ import Button from "./Button";
 import { supabase } from "@/app/_supabase/supabaseClient";
 import { readUserSession } from "@/app/_supabase/actions";
 
-function AddToFavoritesButton({ offerID }: { offerID: number }) {
+async function AddToFavoritesButton({ offerID }: { offerID: number }) {
   //const [isFavorite, setIsFavorite] = useActive(false);
 
-  /*   const handleAddFavorite = () => {
-    const storedFavorites = JSON.parse(
-      localStorage.getItem("favorites") || "[]"
-    );
-    const isItemInFavorites = storedFavorites.includes(offerID);
-
-    if (!isItemInFavorites) {
-      storedFavorites.push(offerID);
-      localStorage.setItem("favorites", JSON.stringify(storedFavorites));
-    } else {
-      const updatedFavorites = storedFavorites.filter(
-        (itemId: number) => itemId !== offerID
-      );
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    }
-  }; */
-
-  /*   useEffect(() => {
-    async function loadData() {
-      const { data } = await supabaseClient.from("test").select("*");
-      setData(data);
-    }
-    // Only run query once user is logged in.
-    if (user) loadData();
-  }, [user]); */
-
-  const handleAddToFavorites = async () => {
+  const handleAddToFavorites = async (offerID: number) => {
     //check if user is logged in, if logged in find user row with the email, than add offerID to favorites column
-    const { data, error } = await readUserSession();
-    const { session } = data;
-
-    return console.log(session, error);
+    try {
+      const { data } = await readUserSession();
+      const userEmail = data.session?.user.email;
+      console.log("USER:", userEmail);
+      if (!userEmail) {
+        console.log("User not logged in");
+        return;
+      }
+      let { data: Users, error } = await supabase
+        .from("Users")
+        .update({ favorites: offerID }) //{ offerID: offerID }
+        .eq("email", userEmail); //how to push to array?
+      if (Users) {
+        console.log("UPDATED:", Users, error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const label = { display: "flex", alignItems: "center" };
-  console.log(offerID);
   return (
     <div
       style={label}
       onClick={() => {
-        /*      setIsFavorite(!isFavorite);
-        handleAddFavorite(); */
-        handleAddToFavorites();
+        /*      setIsFavorite(!isFavorite); */
+        handleAddToFavorites(offerID);
       }}
     >
       {/*       {labelOn ? (
