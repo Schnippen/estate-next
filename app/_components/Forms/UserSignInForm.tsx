@@ -47,8 +47,6 @@ function UserSignInForm() {
       setTimeout(() => {
         setShowSuccessModal(false);
         setShowErrorModal(false);
-        setEmail("");
-        setPassword("");
       }, 5000);
     }
   }, [showSuccessModal, showErrorModal]);
@@ -63,10 +61,13 @@ function UserSignInForm() {
       const result = await signInWithEmailAndPassword(email, password);
       //console.log(result);
       const { data, error } = JSON.parse(result);
-      console.log(data, error.message);
-      if (error.message) {
-        setErrorMessage(error.message);
+      //console.log(data, error?.message);
+      if (error?.message) {
+        //there can be problems here
+        setErrorMessage(error?.message);
         setShowErrorModal(true);
+        setEmail("");
+        setPassword("");
       } else {
         setShowSuccessModal(true);
       }

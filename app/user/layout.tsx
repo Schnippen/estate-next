@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "../_styles/UserLayout.module.css";
 import Link from "next/link";
+import { Inter, Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+});
 function layout({ children }: { children: React.ReactNode }) {
   const SidePanelData = [
     { path: "/user/loginuser", name: "Login User" },
@@ -18,7 +23,7 @@ function layout({ children }: { children: React.ReactNode }) {
   };
   const SidePanel = () => {
     return (
-      <aside className={styles.sidePanel}>
+      <aside className={`${styles.sidePanel} ${montserrat.className}`}>
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <SidePanelList />

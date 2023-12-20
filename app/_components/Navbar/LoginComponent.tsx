@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
-import { readUserSession } from "@/app/_supabase/actions";
+import { supabase } from "@/app/_supabase/supabaseClient";
 
 function LoginComponent() {
   const [data, setData] = useState(false);
@@ -10,8 +10,9 @@ function LoginComponent() {
   useEffect(() => {
     const fetchUserSession = async () => {
       try {
-        const { data } = await readUserSession();
-        data ? setData(true) : setData(false);
+        const { data } = await supabase.auth.getSession();
+
+        !data ? setData(true) : setData(false);
       } catch (error) {
         console.error("Error fetching user session:", error);
       }
