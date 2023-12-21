@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import SearchForm from "./_components/SearchForm/SearchForm";
 import LandingPageBackground from "../public/images/LandingPageBackground.webp";
 import CardPanel from "./_components/Card/CardPanel";
+import LandingPageBlocks from "./_components/LandingPageBlocks/LandingPageBlocks";
 
 export default function Home() {
   const LandingPageDescription = () => {
@@ -36,6 +37,7 @@ export default function Home() {
           <SearchForm />
         </div>
         <div className={styles.page_gap}></div>
+        <LandingPageBlocks />
         <CardPanel />
       </section>
     </main>
