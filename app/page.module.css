@@ -272,6 +272,25 @@
     margin-top: -1rem;
     width: 320px;
   }
+  .marker_wrapper {
+    width: 100%;
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    justify-items: center;
+    align-items: center;
+  }
+  .primaryMarket_container {
+    height: 500px;
+    width: 96%;
+    margin: 20px;
+  }
+  .secondaryMarket_container {
+    height: 500px;
+    width: 96%;
+    margin: 20px;
+  }
 }
 @media (max-width: 400px) {
   .section_searchbar {
@@ -301,6 +320,12 @@
     font-size: medium;
     margin-top: 10px;
     width: 280px;
+  }
+  .descriptionMarket_title {
+    color: var(--tertiary-text-color);
+    font-size: 36px;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
   }
 }
 
