@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import SearchForm from "./_components/SearchForm/SearchForm";
 import LandingPageBackground from "../public/images/LandingPageBackground.webp";
+import CardPanel from "./_components/Card/CardPanel";
 
 export default function Home() {
   const LandingPageDescription = () => {
@@ -35,7 +36,7 @@ export default function Home() {
           <SearchForm />
         </div>
         <div className={styles.page_gap}></div>
-
+        <CardPanel />
       </section>
     </main>
   );
