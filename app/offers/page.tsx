@@ -80,9 +80,9 @@ async function Offers({
 
   const List = () => {
     return Offers?.map((item) => (
-      /*   <Link href={`/offers/${item.offerID}`}>
+      <Link href={`/offers/${item.offerID}`}>
         <ListingItem key={item.offerID} data={item} />
-      </Link> */ <ListingItem key={item.offerID} data={item} />
+      </Link>
     ));
   };
   return (

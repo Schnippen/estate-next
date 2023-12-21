@@ -1,27 +1,30 @@
 "use client";
 import React from "react";
 import styles from "../../_styles/Item.module.css";
+import AddToFavoritesButton from "../Buttons/AddToFavoritesButton";
 
 function ItemMultimediaCategories({
-  isActive,
-  setIsActive,
+  /*  isActive,
+  setIsActive, */
+  offerID,
 }: {
-  isActive: boolean;
-  setIsActive: (isActive: boolean) => void;
+  /* isActive: boolean;
+  setIsActive: (isActive: boolean) => void; */
+  offerID: number | null;
 }) {
   return (
     <ul>
       <li
         className={
-          isActive
-            ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
-            : `${styles.multimedia_categories}`
+          /* isActive
+            ?  */ `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
+          /*   : `${styles.multimedia_categories}` */
         }
-        onClick={() => setIsActive(!isActive)}
+        /*  onClick={() => setIsActive(!isActive)} */
       >
-        Zdjęcia<span></span>
+        Photos<span></span>
       </li>
-      {
+      {/*       {
         <li
           className={
             !isActive
@@ -32,8 +35,11 @@ function ItemMultimediaCategories({
         >
           Mapa<span></span>
         </li>
-      }
-      <div>{/* { <span>{AddToFavorites}</span> } */}AddToFavorites</div>
+      } */}
+      <div className={styles.favoritesContainer}>
+        <p className={styles.favoritesContainer_paragraph}>AddToFavorites</p>{" "}
+        <AddToFavoritesButton offerID={offerID} />
+      </div>
     </ul>
   );
 }

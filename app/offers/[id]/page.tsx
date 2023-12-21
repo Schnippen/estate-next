@@ -23,7 +23,9 @@ async function Item({ params: { id } }: { params: { id: number } }) {
     : null;
 
   const CategoryTitle = Offers ? Offers[0].titleKategoria : null;
-  const PriceInfo: number | null = Offers ? Offers[0].priceInfo : null;
+  const PriceInfo: number | null = Offers
+    ? Offers[0].priceInfo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : null;
   const PriceInfoComponent = () => {
     return (
       <>
@@ -42,7 +44,8 @@ async function Item({ params: { id } }: { params: { id: number } }) {
   const AreaPrice = Offers ? Offers[0].areaPriceInfo : null;
   const AreaInfo = Offers ? Offers[0].areaInfo : null;
   const NumberOfRooms = Offers ? Offers[0].numberOfRoomsInfo : null;
-
+  const OfferID = Offers ? Offers[0].offerID : null;
+  const OfferData = Offers ? Offers[0] : null;
   const AreaInfoComponent = () => {
     if (AreaInfo) {
       return (
@@ -74,7 +77,7 @@ async function Item({ params: { id } }: { params: { id: number } }) {
   };
   return (
     <>
-      {`item:${id}`}
+      {/* {`item:${id}`} */}
       {/* <BreadCrumbs prop={prop} /> */}
       <div className={styles.container}>
         <article className={styles.container_article_main}>
@@ -96,7 +99,10 @@ async function Item({ params: { id } }: { params: { id: number } }) {
                   </ul>
                 </div>
               </header>
-              <ItemMultimediaContainer />
+              <ItemMultimediaContainer
+                offerID={OfferID}
+                OfferData={OfferData}
+              />
             </div>
           </section>
           <section className={styles.section_information}>

@@ -15,7 +15,9 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
     data.priceInfo !== undefined
       ? data.priceInfo === 0
         ? "Zapytaj o cenę"
-        : `${data.priceInfo} zł`
+        : `${data.priceInfo
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} zł`
       : null;
   const floorInfo =
     typeof data.floorInfo === "string" ? (

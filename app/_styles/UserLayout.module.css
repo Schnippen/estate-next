@@ -78,6 +78,11 @@
 .welcomeSection_container > * {
   margin: 10px 0px;
 }
+.mainSectionFormContainerFavorites{
+  height: 768px;
+  width: 1200px;
+  overflow: auto;
+}
 
 @media (max-width: 425px) {
   .userLayoutSection {
