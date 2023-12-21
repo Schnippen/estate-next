@@ -79,6 +79,7 @@ async function Item({ params: { id } }: { params: { id: number } }) {
     <>
       {/* {`item:${id}`} */}
       {/* <BreadCrumbs prop={prop} /> */}
+      <div style={{ marginTop: "50px" }}></div>
       <div className={styles.container}>
         <article className={styles.container_article_main}>
           <section className={styles.section_item}>
