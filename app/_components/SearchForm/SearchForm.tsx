@@ -103,7 +103,7 @@ function SearchForm() {
       setRenderError(() => false);
     }
   }, [queryDetails.PriceFrom, queryDetails.PriceTo]);
-  
+
   //creating query
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -174,7 +174,7 @@ function SearchForm() {
             boxShadow: renderError ? "0px 0px 11px 1px red" : "none",
           }}
         >
-          <label htmlFor="">Cena w zł</label>
+          <label htmlFor="">Price in zł</label>
           <Price data={PriceData} handleChange={handleChange} />
         </div>
         <div className={styles.searchButton}>

@@ -23,14 +23,16 @@ function Price({ data, handleChange }: PriceTypes) {
         data={data}
         name={"PriceFrom"}
         handleChange={handleChange}
-        placeholder={"Cena od..."}
+        placeholder={"Price from..."}
       ></Dropdown>
-      <div style={{ height: "40px", border: "solid var(--secondary-color)" }}></div>
+      <div
+        style={{ height: "40px", border: "solid var(--secondary-color)" }}
+      ></div>
       <Dropdown
         data={data}
         name={"PriceTo"}
         handleChange={handleChange}
-        placeholder={"Cena do..."}
+        placeholder={"Price to..."}
       ></Dropdown>
     </div>
   );
