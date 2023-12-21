@@ -38,7 +38,16 @@ export default function Home() {
         </div>
         <div className={styles.page_gap}></div>
         <LandingPageBlocks />
-        <CardPanel />
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CardPanel />
+        </div>
       </section>
     </main>
   );
