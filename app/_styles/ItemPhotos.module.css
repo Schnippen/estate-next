@@ -131,7 +131,7 @@
 }
 
 @media (max-width: 800px) {
-  .mobile_gallery {
+  .container_photos_bigPhoto {
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
@@ -143,6 +143,26 @@
     padding: 10px 0;
     position: relative;
   }
+  .container_photos_thumbnails {
+    display: none;
+  }
+  .photo {
+    padding: 1rem 0;
+    display: block;
+    height: 300px;
+  }
+  /*   .mobile_gallery {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    height: 300px;
+    background-color: var(--text-background);
+    border-radius: 5px;
+    padding: 10px 0;
+    position: relative;
+  } */
 
   .mobile_gallery_more {
     list-style: none;

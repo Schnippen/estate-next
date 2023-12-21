@@ -1,10 +1,10 @@
 "use client";
-import React, { Suspense, useState } from "react";
+import React /* { Suspense, useState } */ from "react";
 import styles from "../../_styles/Item.module.css";
 import ItemMultimediaCategories from "./ItemMultimediaCategories";
 import ItemPhotos from "./ItemPhotos";
-import GoogleMaps from "../Map/GoogleMaps";
-function ItemMultimediaContainer({
+/* import GoogleMaps from "../Map/GoogleMaps";
+ */ function ItemMultimediaContainer({
   offerID,
   OfferData,
 }: {

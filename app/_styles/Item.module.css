@@ -127,10 +127,16 @@
 .favoritesContainer {
   display: flex;
 }
-.favoritesContainer_paragraph{
+.favoritesContainer_paragraph {
   margin-right: 10px;
 }
 @media (max-width: 800px) {
+  .section_item {
+    margin: 1rem 8px;
+  }
+  .section_information {
+    margin: 1rem 8px;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -155,14 +161,12 @@
     margin: 5px 0;
     font-size: 16px;
   }
-
-  .addToFavorites {
+  .favoritesContainer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
+    flex-direction: column;
+    height: 60px;
   }
-  .addToFavorites > * {
-    margin: 0 5px;
+  .favoritesContainer_paragraph {
+    margin: 10px;
   }
 }
