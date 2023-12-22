@@ -7,3 +7,12 @@
   flex-direction: column;
   /*  background-color: var(--primary-text-color); */
 }
+
+.section_filter {
+  width: 100%;
+  background-color: var(--secondary-color);
+  height: 80px;
+}
+.dropdownWrapper{
+  width: 300px;
+}

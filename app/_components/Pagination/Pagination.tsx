@@ -39,7 +39,7 @@ function Pagination({ numberOfPages }: { numberOfPages: number }) {
     setUrlPath(updatedQueryString);
   }, [page, params.city, params.estate, params.market, params.from, params.to]);
 
-  console.log(`page=${Number(page) + 1}&limit=${Number(limit)}`);
+  //console.log(`page=${Number(page) + 1}&limit=${Number(limit)}`);
 
   const disablePrevious = Number(page) <= 1;
   const disableNext = Number(page) === numberOfPages;

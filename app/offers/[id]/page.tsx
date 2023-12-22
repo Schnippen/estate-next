@@ -9,7 +9,7 @@ import ItemSideArticle from "@/app/_components/Item/ItemSideArticle";
 async function Item({ params: { id } }: { params: { id: number } }) {
   const itemID = id.toString();
   let { data: Offers, error } = await supabase
-    .from("Offers")
+    .from("Offer")
     .select()
     .eq("offerID", itemID);
   //console.log(Offers);

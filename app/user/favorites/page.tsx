@@ -14,7 +14,7 @@ async function FavoritesPage() {
     return;
   }
   let { data: UsersFavorites } = await supabase
-    .from("Users")
+    .from("User")
     .select("favorites") //{ offerID: offerID }
     .eq("email", userEmail); //how to push to array?
   let SelectedUserFavorites = UsersFavorites
@@ -26,7 +26,7 @@ async function FavoritesPage() {
     return null;
   }
   let { data: Favorites, error } = await supabase
-    .from("Offers")
+    .from("Offer")
     .select("*")
     .eq("offerID", SelectedUserFavorites);
   //console.log("FAVORITES:", Favorites);
@@ -43,7 +43,7 @@ async function FavoritesPage() {
       </Link> */ <ListingItem key={item.offerID} data={item} />
     ));
   };
-  //let {Favorites,error}=await supabase.from("Offers").select("*")
+  //let {Favorites,error}=await supabase.from("Offer").select("*")
   return (
     <section className={styles.mainSectionFormContainerFavorites}>
       <List />

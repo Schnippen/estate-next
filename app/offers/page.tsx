@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import React from "react";
-import { fetchData } from "../_utils/fetchData";
 import { supabase } from "../_supabase/supabaseClient";
 import styles from "../_styles/Offers.module.css";
 import ListingItem from "../_components/ListItem/ListingItem";
 import Link from "next/link";
 import Pagination from "../_components/Pagination/Pagination";
+import ListFilters from "../_components/ListFilters/ListFilters";
 
 export const metadata: Metadata = {
   title: "Offers of AnyTown Real Estate",
@@ -26,17 +26,18 @@ async function Offers({
   const market = searchParams["market"] ?? "";
   const from = searchParams["from"] ?? "";
   const to = searchParams["to"] ?? "";
-
+  const ascend = searchParams["order"] ?? "";
   const params = {
     filterCity: city.length > 0 ? city : false,
     filterEstate: estate.length > 0 ? estate : false,
     filterMarket: market.length > 0 ? market : false,
     filterFrom: from.length > 0 ? from : false,
     filterTo: to.length > 0 ? to : false,
+   /*  filterAscend: ascend === "ascend" ? true : false, */
   };
-
+  console.log("ASCEND", ascend);
   let query = supabase
-    .from("Offers")
+    .from("Offer")
     .select("*", { count: "exact" })
     .range(start, end - 1);
   /*  console.log(
@@ -68,6 +69,9 @@ async function Offers({
   if (params.filterTo) {
     query = query.lte("priceInfo", params.filterTo);
   }
+/*   if (params.filterAscend) {
+    query = query.order("priceInfo", { ascending: params.filterAscend });
+  } */
 
   const { data: Offers, error, count } = await query;
   //console.log("query:", query);
@@ -87,6 +91,7 @@ async function Offers({
   };
   return (
     <section className={styles.section_container}>
+      {/* <ListFilters /> */}
       <List />
       <Pagination numberOfPages={numberOfPages} />
     </section>

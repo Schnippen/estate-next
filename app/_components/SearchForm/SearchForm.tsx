@@ -129,12 +129,12 @@ function SearchForm() {
 
     // Remove the trailing "&" from the string
     const finalQueryString = updatedQueryString.slice(0, -1);
-    console.log(finalQueryString);
+    //console.log(finalQueryString);
 
     const route =
       finalQueryString.length > 0 ? `/offers/?${finalQueryString}` : "/offers";
 
-    console.log(route, updatedQueryString);
+    //console.log(route, updatedQueryString);
 
     router.push(route);
   };

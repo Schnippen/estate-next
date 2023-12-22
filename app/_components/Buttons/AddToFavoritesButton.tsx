@@ -24,7 +24,7 @@ async function AddToFavoritesButton({ offerID }: { offerID: number | null }) {
         return;
       }
       let { data: Users, error } = await supabase
-        .from("Users")
+        .from("User")
         .update({ favorites: offerID }) //{ offerID: offerID }
         .eq("email", userEmail); //how to push to array?
       if (Users) {
