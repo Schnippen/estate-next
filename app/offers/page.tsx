@@ -5,7 +5,7 @@ import styles from "../_styles/Offers.module.css";
 import ListingItem from "../_components/ListItem/ListingItem";
 import Link from "next/link";
 import Pagination from "../_components/Pagination/Pagination";
-import ListFilters from "../_components/ListFilters/ListFilters";
+//import ListFilters from "../_components/ListFilters/ListFilters";
 
 export const metadata: Metadata = {
   title: "Offers of AnyTown Real Estate",
@@ -91,7 +91,7 @@ async function Offers({
   };
   return (
     <section className={styles.section_container}>
-      {/* <ListFilters /> */}
+    
       <List />
       <Pagination numberOfPages={numberOfPages} />
     </section>
