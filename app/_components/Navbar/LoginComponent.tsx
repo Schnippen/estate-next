@@ -14,7 +14,7 @@ function LoginComponent() {
         const { data } = await readUserSession();
         //const userEmail = data.session?.user.email;
         //const { data } = await supabase.auth.getSession();
-        console.log(data);
+        //console.log(data);
         data ? setData(true) : setData(false);
       } catch (error) {
         console.error("Error fetching user session:", error);
