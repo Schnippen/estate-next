@@ -13,7 +13,7 @@ function RealtorData({ Offers }: { Offers: any }) {
   const TelephoneNumberSpaces = TelephoneNumber.replace(/(.{3})/g, "$1 ");
   return (
     <header className={styles.section_header}>
-      <h2>Skontakuj się</h2>
+      <h2>Contact us</h2>
       <div className={styles.contact}>
         <Image
           className={styles.profilePicture}

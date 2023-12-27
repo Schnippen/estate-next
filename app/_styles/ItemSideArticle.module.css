@@ -166,7 +166,17 @@
   transition: all 0.3s ease 0s;
   color: var(--tertiary-text-color);
 }
-
+@media (max-width: 1000px) {
+  .container_article_side {
+    width: 100%;
+    height: auto;
+  }
+  .section_sidebar {
+    height: auto;
+    margin: 0 8px;
+    width: auto;
+  }
+}
 @media (max-width: 800px) {
   .container_article_side {
     width: 100%;

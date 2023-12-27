@@ -46,7 +46,7 @@ function ItemSideArticleForm() {
           <input
             name="name"
             type="text"
-            placeholder="wpisz imię"
+            placeholder="name"
             className={styles.inputText}
             value={inputValues.name}
             onChange={handleChange}
@@ -58,7 +58,7 @@ function ItemSideArticleForm() {
           <input
             name="telephone"
             type="tel"
-            placeholder="nr telefonu"
+            placeholder="telephone number"
             className={styles.inputText}
             value={inputValues.telephone}
             onChange={handleChange}
@@ -71,7 +71,7 @@ function ItemSideArticleForm() {
           <input
             name="email"
             type="email"
-            placeholder="wpisz e-mail"
+            placeholder="e-mail"
             className={styles.inputText}
             value={inputValues.email}
             onChange={handleChange}
@@ -88,7 +88,7 @@ function ItemSideArticleForm() {
           onChange={handleChange}
           required
           maxLength={2000}
-          placeholder="Wpisz wiadomość..."
+          placeholder="Text..."
         ></textarea>
         <div className={styles.form_additionalContact_wrapper}>
           <p>Zgadzam się też na otrzymywanie:</p>
@@ -108,7 +108,7 @@ function ItemSideArticleForm() {
           </div>
           <div>
             <input
-              value="Wyślij wiadomość"
+              value="Send message"
               type="submit"
               className={styles.submit}
               disabled={

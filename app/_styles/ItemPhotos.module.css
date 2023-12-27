@@ -345,3 +345,33 @@
     box-shadow: 0px 0px 31px -12px rgba(66, 68, 90, 0.47);
   }
 }
+@media (max-width: 1860px) {
+  .thumbnails {
+    width: 700px;
+  }
+}
+@media (max-width: 1660px) {
+  .thumbnails {
+    width: 600px;
+  }
+}
+@media (max-width: 1490px) {
+  .thumbnails {
+    width: 500px;
+  }
+}
+@media (max-width: 1340px) {
+  .thumbnails {
+    width: 400px;
+  }
+}
+@media (max-width: 1130px) {
+  .thumbnails {
+    width: 300px;
+  }
+}
+@media (max-width: 1000px) {
+  .thumbnails {
+    width: 80%;
+  }
+}

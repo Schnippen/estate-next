@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Footer.module.css";
 import { FiTwitter, FiFacebook, FiInstagram } from "react-icons/fi";
 import { HiPhone } from "react-icons/hi";
+import Button from "../Buttons/Button";
 type ListItemTypes = {
   icon: React.ElementType;
   text: string;
@@ -16,7 +17,9 @@ function Footer() {
           </Button>
         </Link> */
     <div>
-      <Icon />
+      <Button>
+        <Icon />
+      </Button>
     </div>
   );
   const List = () => (

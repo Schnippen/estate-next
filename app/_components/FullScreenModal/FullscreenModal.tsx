@@ -49,17 +49,7 @@ function TermsOfService({ setIsActive, isActive }: TermsOfServiceTypes) {
       }}
     >
       <ButtonExit setIsActive={() => setIsActive(!isActive)} />
-      <div
-        style={{
-          backgroundColor: "#554971",
-          height: "580px",
-          width: "50%",
-          borderRadius: "5px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <div className={styles.terms_container}>
         <h1 style={{ margin: "1rem" }}>Terms Of Service</h1>
         <div
           style={{

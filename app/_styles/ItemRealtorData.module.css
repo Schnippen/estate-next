@@ -37,3 +37,23 @@
 .address > span {
   margin: 4px 0;
 }
+@media (max-width: 1400px) {
+  /*   .section_header {
+    display: flex;
+    flex-direction: column;
+  } */
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profilePicture {
+    position: relative;
+    top: none;
+    transform: none;
+  }
+  .address {
+    padding: 0;
+  }
+}

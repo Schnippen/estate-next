@@ -50,11 +50,13 @@
 .container_article_main_categories_list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .container_article_main_categories_list > li {
   margin-right: 2rem;
   list-style: none;
+  margin-bottom: 10px;
 }
 
 .container_article_multimedia_categories {
@@ -130,7 +132,7 @@
 .favoritesContainer_paragraph {
   margin-right: 10px;
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .section_item {
     margin: 1rem 8px;
   }

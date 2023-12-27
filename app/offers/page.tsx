@@ -26,16 +26,16 @@ async function Offers({
   const market = searchParams["market"] ?? "";
   const from = searchParams["from"] ?? "";
   const to = searchParams["to"] ?? "";
-  const ascend = searchParams["order"] ?? "";
+  //const ascend = searchParams["order"] ?? "";
   const params = {
     filterCity: city.length > 0 ? city : false,
     filterEstate: estate.length > 0 ? estate : false,
     filterMarket: market.length > 0 ? market : false,
     filterFrom: from.length > 0 ? from : false,
     filterTo: to.length > 0 ? to : false,
-   /*  filterAscend: ascend === "ascend" ? true : false, */
+    /*  filterAscend: ascend === "ascend" ? true : false, */
   };
-  console.log("ASCEND", ascend);
+  //console.log("ASCEND", ascend);
   let query = supabase
     .from("Offer")
     .select("*", { count: "exact" })
@@ -69,7 +69,7 @@ async function Offers({
   if (params.filterTo) {
     query = query.lte("priceInfo", params.filterTo);
   }
-/*   if (params.filterAscend) {
+  /*   if (params.filterAscend) {
     query = query.order("priceInfo", { ascending: params.filterAscend });
   } */
 
@@ -91,7 +91,6 @@ async function Offers({
   };
   return (
     <section className={styles.section_container}>
-    
       <List />
       <Pagination numberOfPages={numberOfPages} />
     </section>
