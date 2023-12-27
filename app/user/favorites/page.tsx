@@ -4,11 +4,12 @@ import { redirect } from "next/navigation";
 import { readUserSession } from "@/app/_supabase/actions";
 import { supabase } from "@/app/_supabase/supabaseClient";
 import ListingItem from "@/app/_components/ListItem/ListingItem";
+import Link from "next/link";
 
-async function FavoritesPage() {
-  const { data } = await supabase.auth.getSession();
+async function page() {
+  const { data } = await readUserSession();
   const userEmail = data.session?.user.email;
-  //console.log("USER:", userEmail);
+  console.log("USER:", userEmail);
   if (!userEmail) {
     console.log("User not logged in");
     return;
@@ -33,17 +34,17 @@ async function FavoritesPage() {
 
   const List = () => {
     if (!Favorites) {
-      <div>
+      <div className={styles.no_favorites}>
         <h1>No favorites yet</h1>;
       </div>;
     }
     return Favorites?.map((item) => (
-      /*   <Link href={`/offers/${item.offerID}`}>
+      <Link href={`/offers/${item.offerID}`}>
         <ListingItem key={item.offerID} data={item} />
-      </Link> */ <ListingItem key={item.offerID} data={item} />
+      </Link>
     ));
   };
-  //let {Favorites,error}=await supabase.from("Offer").select("*")
+
   return (
     <section className={styles.mainSectionFormContainerFavorites}>
       <List />
@@ -51,4 +52,4 @@ async function FavoritesPage() {
   );
 }
 
-export default FavoritesPage;
+export default page;

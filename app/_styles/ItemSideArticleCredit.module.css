@@ -87,3 +87,20 @@
   flex-direction: column;
   align-items: center;
 }
+.terms_text {
+  margin: 0 2rem;
+  width: 80%;
+  height: 440px;
+  background-color: #fff;
+  color: #000;
+  overflow-y: auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 0;
+  overflow-x: hidden;
+}

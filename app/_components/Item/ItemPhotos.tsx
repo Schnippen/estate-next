@@ -6,7 +6,8 @@ import { useState } from "react";
 import FullscreenPhotosGallery from "./ItemFullscreenPhotosGallery";
 //import ItemPhotosMobileGallery from "./ItemPhotosMobileGallery";
 import useActive from "../../_utils/useActive";
-
+/* import PICTURE from "../../../public/images/estate1.webp";
+import Image from "next/image"; */
 const ItemPhotos = () => {
   /* const photos = [
     "https://picsum.photos/500/500?random=1",
@@ -37,6 +38,18 @@ const ItemPhotos = () => {
     "https://picsum.photos/500/500?random=9",
     "https://picsum.photos/500/500?random=10",
   ]);
+  const imageLoader = (/* {
+    src,
+    width,
+    quality,
+  }: {
+    src: number;
+    width: number;
+    quality: number;
+  } */) => {
+    return `https://picsum.photos/500/500`;
+  };
+  //https://picsum.photos/200/300.webp
   //thumnails list
   const photosList = photos.map((n, i: number) => (
     <li

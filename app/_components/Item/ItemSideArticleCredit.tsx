@@ -45,11 +45,11 @@ function ItemSideArticleCredit() {
   return (
     <form className={styles.section_container_credit}>
       <header>
-        <h3>Wybierz najkorzystniej</h3>
+        <h3>Choose the best one</h3>
       </header>
       <ItemSideArticleCreditForm />
       <div className={styles.bankWrapper}>
-        <h6>dostępne oferty banków</h6>
+        <h6>available bank offers</h6>
         <div className={styles.bankWrapper_List}>
           <FirstBankArray />
         </div>

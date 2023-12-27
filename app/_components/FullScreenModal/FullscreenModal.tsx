@@ -51,23 +51,7 @@ function TermsOfService({ setIsActive, isActive }: TermsOfServiceTypes) {
       <ButtonExit setIsActive={() => setIsActive(!isActive)} />
       <div className={styles.terms_container}>
         <h1 style={{ margin: "1rem" }}>Terms Of Service</h1>
-        <div
-          style={{
-            margin: "0 2rem",
-            width: "auto",
-            height: "440px",
-            backgroundColor: "#fff",
-            color: "#000",
-            overflowY: "auto",
-            borderRadius: "5px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            padding: "100px 0",
-          }}
-        >
+        <div className={styles.terms_text}>
           <p style={{ margin: "20px 40px" }}>
             Welcome to AnyTownReal Estate, your trusted platform for real estate
             listings. By using our services, you agree to comply with the
