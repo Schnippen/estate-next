@@ -83,7 +83,7 @@ function ListingItem({ data }: { data: RealEstateOffer }) {
           <div className={styles.grid_mini_favoriteButton}>
             <AddToFavoritesButton offerID={data.offerID} />
           </div>
-          <p className={styles.grid_mini_sendMessage}>Napisz wiadomość</p>
+          <p className={styles.grid_mini_sendMessage}>{/* Napisz wiadomość */}</p>
           <div className={styles.grid_mini_sendMessageButton}>
             {/*       <Button>
               <HiMail />

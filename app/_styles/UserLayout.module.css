@@ -81,12 +81,9 @@
 .mainSectionFormContainerFavorites {
   height: 768px;
   min-width: 320px;
-  width: 860px;
+  width: 1000px;
   overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 26px;
   overflow-x: hidden;
 }
 .no_favorites {
@@ -110,6 +107,20 @@
   height: 60px;
   width: 60px;
   margin: 20px;
+}
+@media (max-width: 800px) {
+  .mainSectionFormContainerFavorites {
+    height: 768px;
+    min-width: 320px;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 0;
+  }
 }
 @media (max-width: 425px) {
   .userLayoutSection {

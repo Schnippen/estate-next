@@ -23,7 +23,7 @@ function LoginComponent() {
     fetchUserSession();
   }, []);
   return (
-    <Link href={`/user/`}>
+    <Link href={`/user/`} prefetch={false}>
       <div className={styles.loginButton}>{text}</div>
     </Link>
   );
