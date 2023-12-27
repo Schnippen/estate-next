@@ -14,7 +14,7 @@ async function AddToFavoritesButton({ offerID }: { offerID: number | null }) {
     try {
       const { data } = await readUserSession();
       const userEmail = data.session?.user.email;
-      console.log("USER:", userEmail);
+      //console.log("USER:", userEmail);
       if (!userEmail) {
         console.log("User not logged in");
         return;
@@ -28,7 +28,7 @@ async function AddToFavoritesButton({ offerID }: { offerID: number | null }) {
         .update({ favorites: offerID }) //{ offerID: offerID }
         .eq("email", userEmail); //how to push to array?
       if (Users) {
-        console.log("UPDATED:", Users, error);
+        //console.log("UPDATED:", Users, error);
       }
     } catch (error) {
       console.log(error);
